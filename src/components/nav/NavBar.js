@@ -12,6 +12,7 @@ class NavBar extends Component {
             <Navbar bg="dark" variant="dark">
               <Container>
               <Navbar.Brand href="#home">Bucket List Trapper Keeper</Navbar.Brand>
+              
               <Nav className="me-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#features">Community Page</Nav.Link>
@@ -24,3 +25,5 @@ class NavBar extends Component {
 }
 
 export default NavBar
+
+// I want to add logo in #home
