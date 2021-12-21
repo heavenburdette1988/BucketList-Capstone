@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, Nav, Navbar } from "react-bootstrap"
+import { Container, Image, Nav, Navbar } from "react-bootstrap"
+
 
 
 
@@ -11,11 +11,11 @@ class NavBar extends Component {
             <>
             <Navbar bg="dark" variant="dark">
               <Container>
-              <Navbar.Brand href="#home">Bucket List Trapper Keeper</Navbar.Brand>
+              <Navbar.Brand href="#home"><Image src={require('../image/TrapperKeeperLogo.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></Navbar.Brand>
               
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Community Page</Nav.Link>
+                <Nav.Link href="home" >Home</Nav.Link>
+                <Nav.Link href="features">Community Page</Nav.Link>
               </Nav>
               </Container>
             </Navbar>

@@ -10,7 +10,7 @@ export const IdeaProvider = (props) => {
     
 //will need to update fetch("") calls
      const getIdeas = () => {
-        return fetch(`http://localhost:8088/Ideas?userId=${currentUser}`)
+        return fetch(`http://localhost:8088/Ideas?userId=${currentUser}&_embed=userIdeas`)
         .then(res => res.json())
         .then(setIdeas)
     }
@@ -67,7 +67,7 @@ export const IdeaProvider = (props) => {
 
     return (
         <IdeaContext.Provider value={{
-           ideas, getIdeaById,getIdeas, addIdeas, updateIdea
+           ideas, getIdeaById, getIdeas , addIdeas, updateIdea
         }}>
             {props.children}
         </IdeaContext.Provider>
