@@ -10,9 +10,22 @@ export const IdeaProvider = (props) => {
     
 //will need to update fetch("") calls
      const getIdeas = () => {
-        return fetch(`http://localhost:8088/Ideas?userId=${currentUser}&_embed=userIdeas`)
+        return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
         .then(res => res.json())
-        .then(setIdeas)
+        .then((allTheIdeas) => {
+            let ideasUserHasAdded = []
+            for(let i = 0; i< allTheIdeas.length; i++ ){
+                let singleIdeaInLoop = allTheIdeas[i]
+                for(let x = 0; x < singleIdeaInLoop.userIdeas.length; i++){
+                    let singleUserIdeaInLoop = singleIdeaInLoop.userIdeas[x]
+                    if(singleUserIdeaInLoop.userId === 1 || singleIdeaInLoop.userId === 1){
+                        ideasUserHasAdded.push(singleIdeaInLoop)
+                    }
+                }
+            }
+            console.log("should be user's ideas", ideasUserHasAdded)
+            setIdeas(ideasUserHasAdded)
+        })
     }
 
     const addIdeas = ideaObj => {

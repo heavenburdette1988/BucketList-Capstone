@@ -6,43 +6,19 @@ import { Button, Card } from "react-bootstrap"
 
 
 
-export const IdeaCard = ({idea}) => {
+export const IdeaCard = ({idea, userIdeas}) => {
 
-    // const { getIdeas, getIdeaById } = useContext(IdeaContext)
-    
-    // const [ ideas, setIdeas ] = useState({})
-
-
-
-  //   const {ideaId} = useParams();
-	// const navigate = useNavigate();
-
- 
-
-    // const handleComplete = () => {
-      
-    //     patchTask(task.id)
-    //          .then(getTasks)
-    //           }
-
-    //           // This might also work?
+   
+  
 
               // const formatDate = date => {
               //   const dateSplit = date.split('-');
-              //   // This will definitely work for our app
+              
               //   return new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2]).toString().split(' ').slice(1, 4).join(' ');
               // }
 
 
-  // useEffect(() => {
-  // console.log()
-  // getIdeas()
-  //   // getIdeaById(ideaId)
-  //   .then((response) => {
-  //     setIdeas(response)
-     
-  //   })
-  //   }, [])
+
 
     return (
    
@@ -54,9 +30,9 @@ export const IdeaCard = ({idea}) => {
     <Card.Text className="details">
     {idea.details}
     </Card.Text>
-    {/* <Card.Text className="completionDate">
-    {idea.userIdeas.completionDate}
-    </Card.Text> */}
+    <Card.Text className="completionDate">
+   
+    </Card.Text>
     <Button className="url" variant="primary" href={idea.url}>Let's Go Explore </Button>
   </Card.Body>
 </Card>
