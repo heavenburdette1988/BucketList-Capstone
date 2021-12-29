@@ -6,19 +6,22 @@ export const IdeaContext = createContext()
 
 export const IdeaProvider = (props) => {
     const [ideas, setIdeas] = useState([])
-    const currentUser = localStorage.getItem("react_trapperKeeper_user")
-    
-//will need to update fetch("") calls
+    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+     console.log(currentUser)
+
      const getIdeas = () => {
-        return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
+        return fetch(`http://localhost:8088/Ideas?_embed=userIdeas&_embed=activtyTypes&_embed=priorities`)
         .then(res => res.json())
         .then((allTheIdeas) => {
             let ideasUserHasAdded = []
             for(let i = 0; i< allTheIdeas.length; i++ ){
                 let singleIdeaInLoop = allTheIdeas[i]
-                for(let x = 0; x < singleIdeaInLoop.userIdeas.length; i++){
+                // console.log(singleIdeaInLoop)
+                for(let x = 0; x < singleIdeaInLoop.userIdeas.length; x++){
                     let singleUserIdeaInLoop = singleIdeaInLoop.userIdeas[x]
-                    if(singleUserIdeaInLoop.userId === 1 || singleIdeaInLoop.userId === 1){
+                    console.log("user idea in loop", singleUserIdeaInLoop.userId)
+                
+                    if(singleUserIdeaInLoop.userId === currentUser || singleIdeaInLoop.userId === currentUser){
                         ideasUserHasAdded.push(singleIdeaInLoop)
                     }
                 }
@@ -28,18 +31,23 @@ export const IdeaProvider = (props) => {
         })
     }
 
+//* This allows us to access both ideas and userIdeas from the Database -  UserIdeas is a join table
+
+
+
     const addIdeas = ideaObj => {
+       
         return fetch("http://localhost:8088/Ideas", {
+            
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(ideaObj)
-        })
-        
-        .then(getIdeas)
-      
-    }
+                    })
+                .then(getIdeas)
+     }
+
 
 
     const getIdeaById = (id) => {

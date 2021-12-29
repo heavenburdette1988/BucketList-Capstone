@@ -15,10 +15,22 @@ export const UserIdeaProvider = (props) => {
         .then(setUserIdeas)
     }
 
+    const addUserIdeas = userIdeaObj => {
+       
+        return fetch("http://localhost:8088/userIdeas", {
+            
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userIdeaObj)
+                    })
+                .then(getUserIdeas)
+     }
     
     return (
         <UserIdeaContext.Provider value={{
-               userIdeas, getUserIdeas
+               userIdeas, getUserIdeas, addUserIdeas
         }}>
             {props.children}
         </UserIdeaContext.Provider>

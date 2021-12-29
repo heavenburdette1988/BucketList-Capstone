@@ -5,6 +5,7 @@ import React, { useContext, useEffect } from "react"
 import { IdeaContext } from "./IdeaProvider"
 import { IdeaCard } from "./IdeaCard"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -19,15 +20,19 @@ export const IdeaList = () => {
     getIdeas()
     .then(getUserIdeas)
     }, [])
-//   const navigate = useNavigate()
+    
+  const navigate = useNavigate()
 
 
 
 
   return (
 
-    
+    <>
    
+    <button onClick={() => navigate("/home/create")}>
+    New Idea
+</button>
   
     <div className="ideas">
       
@@ -39,22 +44,23 @@ export const IdeaList = () => {
 
  
 
-        ideas
-         .map(idea =>{
+        ideas.map(idea =>{
             
-            // const theUserIdea  = userIdeas.find(i => i.userId === ideas.id)
-            // console.log(theUserIdea)
+            // const theUserIdea  = ideas.find(i => i.id === userIdeas.id)
+            // console.log("idea",theUserIdea)
      
           
           return <IdeaCard 
           key={idea.id}
           idea={idea} 
-         />
           
+          />
+         
            })
            
       }
-    </div>
+    </div> 
+    </>
 
   )
 }
