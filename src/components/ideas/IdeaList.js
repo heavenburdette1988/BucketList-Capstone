@@ -16,7 +16,7 @@ export const IdeaList = () => {
   const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
   //useEffect - reach out to the world for something
   useEffect(() => {
-    console.log("IdeaList: useEffect - getIdeas")
+    // console.log("IdeaList: useEffect - getIdeas")
     getIdeas()
     .then(getUserIdeas)
     }, [])
@@ -36,8 +36,8 @@ export const IdeaList = () => {
   
     <div className="ideas">
       
-      {console.log("IdeaList: Render", ideas)}
-    
+      {/* {console.log("IdeaList: Render", ideas)}
+     */}
       {
 
         // const theUserIdea = userIdeas.filter(ui => i.userId.includes(...currentUser))

@@ -10,7 +10,8 @@ export const ActivityTypeProvider = (props) => {
     
 //will need to update fetch("") calls
      const getActivityTypes = () => {
-        return fetch(`http://localhost:8088/activtyTypes`)
+        return fetch(`http://localhost:8088/types`)
+
         .then(res => res.json())
         .then(setActivityTypes)
     }

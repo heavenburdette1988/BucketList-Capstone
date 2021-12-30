@@ -1,32 +1,49 @@
 import React, { useContext, useEffect, useState } from "react"
 
 import { useNavigate } from 'react-router-dom';
-import { ActivityTypesContext } from "../activityTypes/activityTypesProvider";
+import { ActivityTypesContext } from "../activityTypes/ActivityTypesProvider";
 import { PrioritiesContext } from "../priorities/PriorityProvider";
-import { UserIdeaProvider } from "../userIdeas/UserIdeasProvider";
+import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
+
 import { IdeaContext } from "./IdeaProvider";
 
 
 export const IdeaForm = () => {
-    const { addIdeas, getIdeas } = useContext(IdeaContext)
-    // const { addUserIdeas, userIdeas  } = useContext(UserIdeaProvider)
+    const { ideas ,addIdeas, getIdeas } = useContext(IdeaContext)
+    const {  userIdeas, getUserIdeas  } = useContext(UserIdeaContext)
     const { getActivityTypes, userActivityTypes } =useContext(ActivityTypesContext)
 
     const {getPriorities , prioirties } =useContext(PrioritiesContext)
+    
+    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+
+
     /*
     With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
     Define the intial state of the form inputs with useState()
     */
+    
 
+    // Todo: add all of the properties on the userIdea table to this state object
     const [idea, setIdea] = useState({
-      title: "",
+      //Properties from ideas
+     
+        title: "",
       url: "",
       details:"",
-      userId: 1
+      userId: currentUser,
+      //properties from userIdeas
+      rating: 0,
+      notes: "",
+      completedIdea: false,
+      completionDate: null,
+      typeId: 0,
+      priortiesId: 0
+
     
     });   // setting the state?
 
-// const [userIdea, setUserIdea] = useState({})
+
 
     const navigate = useNavigate();   //use nav allows you to change url locations?
 
@@ -36,7 +53,7 @@ export const IdeaForm = () => {
     */
     useEffect(() => {
       getIdeas()
-      .then(getActivityTypes).then(getPriorities)
+      .then(getActivityTypes).then(getPriorities).then(getUserIdeas)
       
     }, [])
 
@@ -51,58 +68,66 @@ export const IdeaForm = () => {
       /* Animal is an object with properties.
       Set the property to the new value
       using object bracket notation. */
-      newIdea[event.target.id] = event.target.value
+      newIdea[event.target.name] = event.target.value
       // update state
       setIdea(newIdea)
     }
 
     const handleClickSaveIdea = (event) => {
+        console.log("the Idea", idea)
       event.preventDefault() //Prevents the browser from submitting the form
 
-    //   const locationId = parseInt(employee.locationId)
-    //   employee.locationId = locationId
+      
+      const typeId = parseInt(idea.typeId)
+      idea.typeId = typeId
     
+      const priorityId = parseInt(idea.priortiesId)
+      idea.priortiesId = priorityId
 
-    //   if (locationId === 0) {
-    //     window.alert("Please select a location")
-    //   } else {
+      if (typeId === 0 || priorityId === 0 ) {
+        window.alert("Please select a type or priority.")
+      
+      } else {
         // invoke addAnimal passing animal as an argument.
         // once complete, change the url and display the animal list
         addIdeas(idea)
         .then(() => navigate("/home")) //telling it to useNavigate to redisplay updated animal list
       }
-    
+    }
+
 
     return (
       <form className="ideaForm">
           <h2 className="ideaForm__title">New Idea</h2>
+                   
           <fieldset>
               <div className="form-group">
                   <label htmlFor="title">Idea Title:</label>
-                  <input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Idea Title" value={idea.title}/>
+                  <input type="text" id="title" name="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Idea Title" value={idea.title}/>
+              </div>
+          </fieldset>
+          <fieldset>
+              <div className="form-group">
+                  <label htmlFor="url">Url: </label>
+                  <input type="text" id="url" name="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="URL" value={idea.url}/>
               </div>
           </fieldset>
          <fieldset>
               <div className="form-group">
                   <label htmlFor="details">Details: </label>
-                  <input type="text" id="details" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Idea Title" value={idea.details}/>
+                  <input type="text" id="details" name="details" onChange={handleControlledInputChange}  autoFocus className="form-control" placeholder="Details of Activity" value={idea.details}/>
               </div>
           </fieldset>
-
-          <fieldset>
-              <div className="form-group">
-                  <label htmlFor="url">Url: </label>
-                  <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Idea Title" value={idea.url}/>
-              </div>
-          </fieldset>
+         
             <fieldset>
               <div className="form-group">
                   <label htmlFor="activityTypes">Activity Type: </label>
-                  <select defaultValue={userActivityTypes.types} name="type" id="type" className="form-control"  onChange={handleControlledInputChange}>
+                  <select defaultValue={userActivityTypes.type} name="typeId" id="type" className="form-control"  onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
                       {userActivityTypes.map(a => (
                           <option key={a.id} value={a.id}>
                               {a.type}
+                              
                           </option>
                       ))}
                   </select>
@@ -111,10 +136,10 @@ export const IdeaForm = () => {
           <fieldset>
               <div className="form-group">
                   <label htmlFor="prioirties">Age range you want to complete in: </label>
-                  <select defaultValue={prioirties.priority} name="type" id="type" className="form-control"  onChange={handleControlledInputChange}>
+                  <select defaultValue={prioirties.priority} name="priortiesId" id="priority" className="form-control"  onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
                       {prioirties.map(p => (
-                          <option key={p.id} value={p.id}>
+                          <option key={p.id} value={p.id}  >  
                               {p.priority}
                           </option>
                       ))}

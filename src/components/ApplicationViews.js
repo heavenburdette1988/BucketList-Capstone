@@ -1,7 +1,8 @@
 
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
-import { ActivityTypeProvider } from "./activityTypes/activityTypesProvider";
+import { ActivityTypeProvider } from "./activityTypes/ActivityTypesProvider";
+import { IdeaDetail } from "./ideas/IdeaDetail";
 import { IdeaForm } from "./ideas/IdeaForm";
 // import { IdeaCard } from "./ideas/IdeaCard";
 import { IdeaList } from "./ideas/IdeaList";
@@ -25,6 +26,7 @@ export default class ApplicationViews extends Component {
          <Routes>
          <Route path="home/*" element={<IdeaList />} />
          <Route path="home/create/*" element={<IdeaForm />} />
+         {/* <Route path="ideas/detail/:ideaId/*" element={<IdeaDetail />} /> */}
         </Routes>            
      </IdeaProvider>
      </UserIdeaProvider>
