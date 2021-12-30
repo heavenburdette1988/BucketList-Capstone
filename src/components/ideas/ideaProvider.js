@@ -11,23 +11,8 @@ export const IdeaProvider = (props) => {
     const getIdeas = () => {
         return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
             .then(res => res.json())
-            .then((allTheIdeas) => {
-                let ideasUserHasAdded = []
-                for (let i = 0; i < allTheIdeas.length; i++) {
-                    let singleIdeaInLoop = allTheIdeas[i]
-                    // console.log(singleIdeaInLoop)
-                    for (let x = 0; x < singleIdeaInLoop.userIdeas.length; x++) {
-                        let singleUserIdeaInLoop = singleIdeaInLoop.userIdeas[x]
-                        // console.log("user idea in loop", singleUserIdeaInLoop.userId)
-
-                        if (singleUserIdeaInLoop.userId === currentUser || singleIdeaInLoop.userId === currentUser) {
-                            ideasUserHasAdded.push(singleIdeaInLoop)
-                        }
-                    }
-                }
-                // console.log("should be user's ideas", ideasUserHasAdded)
-                setIdeas(ideasUserHasAdded)
-            })
+        .then(setIdeas)
+           
     }
 
     //* This allows us to access both ideas and userIdeas from the Database to be able to print from both lists -  UserIdeas is a join table

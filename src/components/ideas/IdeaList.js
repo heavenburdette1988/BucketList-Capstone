@@ -12,13 +12,12 @@ import { useNavigate } from "react-router-dom"
 export const IdeaList = () => {
   // This state changes when `getIdeas()` is invoked below
   const { ideas, getIdeas } = useContext(IdeaContext)
-   const currentUser = localStorage.getItem("react_trapperKeeper_user")
+
   const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
   //useEffect - reach out to the world for something
   useEffect(() => {
     // console.log("IdeaList: useEffect - getIdeas")
-    getIdeas()
-    .then(getUserIdeas)
+   getUserIdeas()
     }, [])
     
   const navigate = useNavigate()
@@ -44,13 +43,14 @@ export const IdeaList = () => {
 
  
 
-        ideas.map(idea =>{
-            
+        userIdeas.map(idea =>{
+        
             // const theUserIdea  = ideas.find(i => i.id === userIdeas.id)
             // console.log("idea",theUserIdea)
      
           
           return <IdeaCard 
+        
           key={idea.id}
           idea={idea} 
           

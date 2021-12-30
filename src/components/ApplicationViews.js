@@ -25,7 +25,7 @@ export default class ApplicationViews extends Component {
      <IdeaProvider>
          <Routes>
          <Route path="home/*" element={<IdeaList />} />
-         <Route path="home/create/*" element={<IdeaForm />} />
+         {/* <Route path="home/create/*" element={<IdeaForm />} /> */}
          {/* <Route path="ideas/detail/:ideaId/*" element={<IdeaDetail />} /> */}
         </Routes>            
      </IdeaProvider>
