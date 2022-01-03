@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 // import "./Idea.css"
 // import { useNavigate } from "react-router-dom"
 // import { Button } from "react-bootstrap"
@@ -6,14 +6,15 @@ import { IdeaContext } from "./IdeaProvider"
 import { IdeaCard } from "./IdeaCard"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { useNavigate } from "react-router-dom"
+import { Button } from "react-bootstrap"
 
+import './Idea.css'
 
-
-export const IdeaList = () => {
+export const IdeaList = (props) => {
   // This state changes when `getIdeas()` is invoked below
-  const { ideas, getIdeas } = useContext(IdeaContext)
-
-  const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
+   const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
+  const [showCompletedUserIdeas, setShowCompletedUserIdeas] = useState(false)
+ 
   //useEffect - reach out to the world for something
   useEffect(() => {
     // console.log("IdeaList: useEffect - getIdeas")
@@ -29,9 +30,9 @@ export const IdeaList = () => {
 
     <>
    
-    <button onClick={() => navigate("/home/create")}>
+    {/* <Button onClick={() => navigate("/home/create")}>
     New Idea
-</button>
+</Button> */}
   
     <div className="ideas">
       
@@ -41,9 +42,9 @@ export const IdeaList = () => {
 
         // const theUserIdea = userIdeas.filter(ui => i.userId.includes(...currentUser))
 
- 
+ //todo Add user Welcome Section
 
-        userIdeas.map(idea =>{
+        userIdeas.filter(userIdea => userIdea.completedIdea === showCompletedUserIdeas).map(userIdea =>{
         
             // const theUserIdea  = ideas.find(i => i.id === userIdeas.id)
             // console.log("idea",theUserIdea)
@@ -51,10 +52,14 @@ export const IdeaList = () => {
           
           return <IdeaCard 
         
-          key={idea.id}
-          idea={idea} 
+          key={userIdea.id}
+          userIdea={userIdea} 
           
           />
+
+         
+
+          
          
            })
            

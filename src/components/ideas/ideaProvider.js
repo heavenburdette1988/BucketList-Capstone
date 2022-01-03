@@ -1,4 +1,7 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useContext } from "react"
+import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
+import './Idea.css'
+
 
 export const IdeaContext = createContext()
 
@@ -7,7 +10,8 @@ export const IdeaContext = createContext()
 export const IdeaProvider = (props) => {
     const [ideas, setIdeas] = useState([])
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
-
+    const { getUserIdeas } = useContext(UserIdeaContext)
+    
     const getIdeas = () => {
         return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
             .then(res => res.json())
@@ -35,8 +39,8 @@ export const IdeaProvider = (props) => {
             notes: ideaObj.notes,
             completedIdea: ideaObj.completedIdea,
             completionDate: ideaObj.completionDate,
-            typeId: ideaObj.typeId,
-            priortiesid: ideaObj.priortiesId,
+            typeId: +ideaObj.typeId,
+            ageId: +ideaObj.ageId,
             ideaId: ideaObj.ideaId,
             userId: ideaObj.userId
 
@@ -77,7 +81,7 @@ export const IdeaProvider = (props) => {
 
 
     const getIdeaById = (id) => {
-        return fetch(`http://localhost:8088/ideas/${id}`)
+        return fetch(`http://localhost:8088/useridea/${id}`)
             .then(res => res.json())
 
     }
@@ -92,12 +96,13 @@ export const IdeaProvider = (props) => {
     //         body: JSON.stringify({isCompleted: true})
     //     })
     // }
-    // const deleteTask = taskId => {
-    //     return fetch(`http://localhost:8088/tasks/${taskId}`, {
-    //         method: "DELETE"
-    //     })
-    //         .then(getTasks)
-    // }
+
+    const deleteIdea = ideaId => {
+        return fetch(`http://localhost:8088/userIdeas/${ideaId}`, {
+            method: "DELETE"
+        })
+            .then(getUserIdeas)
+    }
 
     const updateIdea = idea => {
         return fetch(`http://localhost:8088/ideas/${idea.id}`, {
@@ -114,7 +119,7 @@ export const IdeaProvider = (props) => {
 
     return (
         <IdeaContext.Provider value={{
-            ideas, getIdeaById, getIdeas, addIdeas, updateIdea
+            ideas, getIdeaById, getIdeas, addIdeas, updateIdea, deleteIdea
         }}>
             {props.children}
         </IdeaContext.Provider>

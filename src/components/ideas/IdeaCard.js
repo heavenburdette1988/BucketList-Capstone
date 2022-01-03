@@ -1,8 +1,9 @@
 // import React, { useContext, useEffect, useState } from "react"
-import { useContext, useEffect } from "react"
-import { Button, Card } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import { ActivityTypesContext } from "../activityTypes/ActivityTypesProvider"
+import { useContext, useEffect, useState } from "react"
+import {  Button, Card, InputGroup, Modal } from "react-bootstrap"
+import {useNavigate, useParams } from "react-router-dom"
+
+
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaContext } from "./IdeaProvider"
 // import { useNavigate, useParams } from "react-router-dom"
@@ -11,54 +12,95 @@ import { IdeaContext } from "./IdeaProvider"
 
 
 
-export const IdeaCard = ({idea}) => {
-console.log(idea)
-  const { getUserIdeas } = useContext(UserIdeaContext)
-  const { getIdeas } = useContext(IdeaContext)
+export const IdeaCard = ({userIdea}) => {
+
+  const {  getUserIdeas, patchUserIdea  } = useContext(UserIdeaContext)
+// console.log("usId", userIdea)
+
+  const { deleteIdea } = useContext(IdeaContext)
    
-  // const { getActivityTypes, userActivityTypes } = useContext(ActivityTypesContext)
-// todo: uncomment this out and see if you have the right
-//console.log("this is the idea prop in IdeaCard", idea)
-  useEffect(() => {
-    getUserIdeas().then(getIdeas)
-    
-  }, []) 
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  
+	const navigate = useNavigate();
+
+  const handleUserIdeaDelete = () => {
+    console.log("deleteIdeaIds",userIdea.id)
+    deleteIdea(userIdea.id)
+      .then(() => {
+        navigate(handleClose)
+      })
+  }
+
+const handleComplete = () => {
+  console.log(handleComplete)
+if (userIdea.completedIdea === true) {
+    patchUserIdea(userIdea.id, false)
+         .then(getUserIdeas) 
+        } else {
+          patchUserIdea(userIdea.id, true)
+          .then(getUserIdeas)
+          
+        }
+        
+         }
 
 
-              // const formatDate = date => {
-              //   const dateSplit = date.split('-');
-              
-              //   return new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2]).toString().split(' ').slice(1, 4).join(' ');
-              // }
+  
 
+        
 
-//todo will need to move some data to the details button.
 
     return (
    
-
-      <Card className="mainCard" style={{ width: '18rem' }}>
-  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+      
+      <Card className="mainCard" style={{ width: '15rem' }}>
+  <Card.Img className="cardImg" variant="top" src={userIdea.type.typeImg}></Card.Img>
   <Card.Body>
   
     <Card.Title className="title">
-            { idea.idea.title }
+         { userIdea.idea.title }     
           </Card.Title>
-
-          {/* <Link to={`/locations/detail/${userIdea.id}`}></Link> */}
-    {/* <Card.Text className="priorties"> Age range you want to complete in: {idea.userIdeas[0].priortiesId}
+    <Card.Text className="age"> When to complete by: {userIdea.age.age}
     </Card.Text>
-    <Card.Text className="type">Type of Activity: {userIdeas.activityTypes?.map(type => {
-        return <div key={type.id} value={type.id}>
-        {type.type}</div>
-      })} */}
-{/*   
-    </Card.Text> */}
-    {/* //todo need get prioirties and types to loop//} */}
+    
+     </Card.Body>
 
-  </Card.Body>
+  {/* Details Button starts here   */}
+  <Button variant="primary" onClick={handleShow}>
+               Details
+             </Button>
+      
+             <Modal show={show} onHide={handleClose}>
+               <Modal.Header closeButton>
+                 <Modal.Title href={userIdea.idea.url} target="_blank"> {userIdea.idea.title }</Modal.Title>
+               </Modal.Header>
+        
+     <Modal.Body>
+       <p>Details: {userIdea.idea.details}</p> 
+       <p>When to complete: {userIdea.age.age}</p>
+       <p>Type of Activity: {userIdea.type.type}</p> 
+      </Modal.Body> 
+               <Modal.Footer>
+          
+                 <Button variant="primary" onClick={handleUserIdeaDelete}>
+                   Delete
+                </Button>
+                <Button variant="primary" onClick={handleComplete}>
+                  Complete
+                </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                   Close
+                </Button>
+              </Modal.Footer>
+
+             </Modal>
   
 </Card>
+
+
 
 
      

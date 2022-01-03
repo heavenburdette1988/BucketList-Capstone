@@ -26,7 +26,7 @@ const Auth = () => {
     return(
       <>
         <NavBar />
-     <ApplicationViews/>
+     <ApplicationViews />
       </>
     );
   } else {

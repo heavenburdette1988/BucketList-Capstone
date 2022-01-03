@@ -10,7 +10,7 @@ export const UserIdeaProvider = (props) => {
     
 //will need to update fetch("") calls
      const getUserIdeas = () => {
-        return fetch(`http://localhost:8088/userIdeas?_userId=${currentUser}&_expand=idea`)
+        return fetch(`http://localhost:8088/userIdeas?_userId=${currentUser}&_expand=idea&_expand=type&_expand=age`)
         .then(res => res.json())
         .then(setUserIdeas)
     }
@@ -28,10 +28,27 @@ export const UserIdeaProvider = (props) => {
                     })
                 .then(getUserIdeas)
      }
+
+     const deleteUserIdea = ideaId => {
+        return fetch(`http://localhost:8088/userIdeas/${ideaId}`, {
+            method: "DELETE"
+        })
+            .then(getUserIdeas)
+    }
     
+     const patchUserIdea = ideaId => {
+
+        return fetch(`http://localhost:8088/userIdeas/${ideaId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({completedIdea: true})
+        })
+    }
     return (
         <UserIdeaContext.Provider value={{
-               userIdeas, getUserIdeas, addUserIdeas
+               userIdeas, getUserIdeas, addUserIdeas, deleteUserIdea, patchUserIdea
         }}>
             {props.children}
         </UserIdeaContext.Provider>

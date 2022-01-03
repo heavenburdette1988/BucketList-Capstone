@@ -1,0 +1,17 @@
+.cardImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.ideasAppView {
+display: flex;
+width: 50vw;
+}
+
+.ideaForm{
+
+width: 40vw;
+}

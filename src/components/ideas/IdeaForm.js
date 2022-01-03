@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from "react"
 
 import { useNavigate } from 'react-router-dom';
 import { ActivityTypesContext } from "../activityTypes/ActivityTypesProvider";
-import { PrioritiesContext } from "../priorities/PriorityProvider";
+import { AgeContext } from "../ages/AgeProvider";
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
 
 import { IdeaContext } from "./IdeaProvider";
+import './Idea.css'
 
 
 export const IdeaForm = () => {
@@ -13,7 +14,7 @@ export const IdeaForm = () => {
     const {  userIdeas, getUserIdeas  } = useContext(UserIdeaContext)
     const { getActivityTypes, userActivityTypes } =useContext(ActivityTypesContext)
 
-    const {getPriorities , prioirties } =useContext(PrioritiesContext)
+    const {getAges , ages } =useContext(AgeContext)
     
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
 
@@ -38,7 +39,7 @@ export const IdeaForm = () => {
       completedIdea: false,
       completionDate: null,
       typeId: 0,
-      priortiesId: 0
+      ageId: 0
 
     
     });   // setting the state?
@@ -53,7 +54,7 @@ export const IdeaForm = () => {
     */
     useEffect(() => {
       getIdeas()
-      .then(getActivityTypes).then(getPriorities).then(getUserIdeas)
+      .then(getActivityTypes).then(getAges).then(getUserIdeas)
       
     }, [])
 
@@ -79,21 +80,20 @@ export const IdeaForm = () => {
 
       
       const typeId = parseInt(idea.typeId)
-      idea.typeId = typeId
+      ideas.typeId = typeId
     
-      const priorityId = parseInt(idea.priortiesId)
-      idea.priortiesId = priorityId
+      const ageId = parseInt(idea.ageId)
+      idea.ageId = ageId
 
-      if (typeId === 0 || priorityId === 0 ) {
+      if (typeId === 0 || ageId === 0 ) {
         window.alert("Please select a type or priority.")
       
       } else {
-        // invoke addAnimal passing animal as an argument.
-        // once complete, change the url and display the animal list
+       
         addIdeas(idea)
         .then(() => navigate("/home")) //telling it to useNavigate to redisplay updated animal list
       }
-    }
+}
 
 
     return (
@@ -118,11 +118,11 @@ export const IdeaForm = () => {
                   <input type="text" id="details" name="details" onChange={handleControlledInputChange}  autoFocus className="form-control" placeholder="Details of Activity" value={idea.details}/>
               </div>
           </fieldset>
-         
-            <fieldset>
+ 
+             <fieldset>
               <div className="form-group">
                   <label htmlFor="activityTypes">Activity Type: </label>
-                  <select defaultValue={userActivityTypes.type} name="typeId" id="type" className="form-control"  onChange={handleControlledInputChange}>
+                  <select defaultValue={ages.id} name="typeId" id="typeId" className="form-control"  onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
                       {userActivityTypes.map(a => (
                           <option key={a.id} value={a.id}>
@@ -132,15 +132,15 @@ export const IdeaForm = () => {
                       ))}
                   </select>
               </div>
-          </fieldset>
+          </fieldset> 
           <fieldset>
               <div className="form-group">
-                  <label htmlFor="prioirties">Age range you want to complete in: </label>
-                  <select defaultValue={prioirties.priority} name="priortiesId" id="priority" className="form-control"  onChange={handleControlledInputChange}>
+                  <label htmlFor="ages">Age range you want to complete in: </label>
+                  <select defaultValue={ages.id} name="ageId" id="ageId" className="form-control"  onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
-                      {prioirties.map(p => (
-                          <option key={p.id} value={p.id}  >  
-                              {p.priority}
+                      {ages.map(p => (
+                          <option key={p.id} value={p.id}>  
+                              {p.age}
                           </option>
                       ))}
                   </select>
