@@ -17,7 +17,7 @@ export const IdeaList = () => {
 
   //useEffect - reach out to the world for something
   useEffect(() => {
-    // console.log("IdeaList: useEffect - getIdeas")
+    console.log("IdeaList: useEffect - getUserIdeas", getUserIdeas)
    getUserIdeas()
     }, [])
     
@@ -27,7 +27,7 @@ export const IdeaList = () => {
 
 
   return (
-
+ 
     <>
    
     {/* <Button onClick={() => navigate("/home/create")}>
@@ -37,7 +37,7 @@ export const IdeaList = () => {
 
   
     <div className="ideas">
-      
+     
       {/* {console.log("IdeaList: Render", ideas)}
      */}
       {

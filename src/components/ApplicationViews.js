@@ -14,6 +14,7 @@ import { UserIdeaProvider } from "./userIdeas/UserIdeasProvider";
 import { CompletedIdeaList } from "./completedIdeas/CompletedIdeaList";
 import { CompletedIdeaForm } from "./completedIdeas/CompletedIdeaForm";
 import { CommunityList } from "./communities/CommunityList";
+import { CommunityForm } from "./communities/CommunityForm";
 
 
 
@@ -29,8 +30,9 @@ export default class ApplicationViews extends Component {
      <IdeaProvider>
          <Routes>
          <Route path="home/*" element={<><IdeaForm /><IdeaList /><CompletedIdeaList/></>} />
-         <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />      
-         {/* <Route path="community/*" element={<CommunityList />} />  */}
+         <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />       
+         <Route path="community/*" element={<CommunityList />} /> 
+         <Route path="community/add/:AddIdeaId*" element={<CommunityForm />} /> 
         </Routes>            
      </IdeaProvider>
      </UserIdeaProvider>

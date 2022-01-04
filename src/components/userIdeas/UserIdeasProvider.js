@@ -10,24 +10,33 @@ export const UserIdeaProvider = (props) => {
     
 //will need to update fetch("") calls
      const getUserIdeas = () => {
-        return fetch(`http://localhost:8088/userIdeas?_userId=${currentUser}&_expand=idea&_expand=type&_expand=age`)
+        return fetch(`http://localhost:8088/userIdeas?userId=${currentUser}&_expand=idea&_expand=type&_expand=age`)
         .then(res => res.json())
         .then(setUserIdeas)
     }
 
-
-    const addUserIdeas = userIdeaObj => {
-       
-        return fetch("http://localhost:8088/userIdeas", {
-            
+    const addUserIdeas = (idea) => {
+        return fetch('http://localhost:8088/userIdeas?_expand=idea', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }, 
-            body: JSON.stringify(userIdeaObj)
-                    })
-                .then(getUserIdeas)
-     }
+            },
+            body: JSON.stringify(idea)
+        })
+        .then(getUserIdeas)
+    }
+    // const addUserIdeas = userIdeaObj => {
+       
+    //     return fetch("http://localhost:8088/userIdeas", {
+            
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }, 
+    //         body: JSON.stringify(userIdeaObj)
+    //                 })
+    //             .then(getUserIdeas)
+    //  }
 
      const deleteUserIdea = UserIdeaId => {
         return fetch(`http://localhost:8088/userIdeas/${UserIdeaId}`, {

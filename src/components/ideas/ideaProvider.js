@@ -24,7 +24,7 @@ export const IdeaProvider = (props) => {
 
 
     const addIdeas = ideaObj => {
- console.log(ideaObj)
+ console.log("the",ideaObj)
         // Todo: fill out these objects to match the db tables
         const idea = {
             userId: ideaObj.userId,
@@ -78,10 +78,10 @@ export const IdeaProvider = (props) => {
             .then(getUserIdeas)
     }
 
-
+ 
 
     const getIdeaById = (id) => {
-        return fetch(`http://localhost:8088/useridea/${id}`)
+        return fetch(`http://localhost:8088/ideas/${id}`)
             .then(res => res.json())
 
     }
@@ -98,7 +98,7 @@ export const IdeaProvider = (props) => {
     // }
 
     const deleteIdea = ideaId => {
-        return fetch(`http://localhost:8088/userIdeas/${ideaId}`, {
+        return fetch(`http://localhost:8088/ideas/${ideaId}`, {
             method: "DELETE"
         })
             .then(getUserIdeas)
