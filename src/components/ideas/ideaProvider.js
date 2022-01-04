@@ -75,7 +75,7 @@ export const IdeaProvider = (props) => {
         })
 
         })
-            .then(getIdeas)
+            .then(getUserIdeas)
     }
 
 
@@ -112,7 +112,7 @@ export const IdeaProvider = (props) => {
             },
             body: JSON.stringify(idea)
         })
-            .then(getIdeas)
+            .then(getUserIdeas)
     }
 
 

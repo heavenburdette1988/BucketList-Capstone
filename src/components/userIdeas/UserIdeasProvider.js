@@ -23,18 +23,35 @@ export const UserIdeaProvider = (props) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            },
+            }, 
             body: JSON.stringify(userIdeaObj)
                     })
                 .then(getUserIdeas)
      }
 
-     const deleteUserIdea = ideaId => {
-        return fetch(`http://localhost:8088/userIdeas/${ideaId}`, {
+     const deleteUserIdea = UserIdeaId => {
+        return fetch(`http://localhost:8088/userIdeas/${UserIdeaId}`, {
             method: "DELETE"
         })
             .then(getUserIdeas)
     }
+    const getUserIdeaById = (id) => {
+        return fetch(`http://localhost:8088/userIdeas/${id}`)
+            .then(res => res.json())
+
+    }
+    const updateUserIdea = idea => {
+        console.log(idea)
+        return fetch(`http://localhost:8088/userIdeas/${idea.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(idea)
+        })
+            .then(getUserIdeas)
+    }
+
     
      const patchUserIdea = ideaId => {
 
@@ -48,7 +65,7 @@ export const UserIdeaProvider = (props) => {
     }
     return (
         <UserIdeaContext.Provider value={{
-               userIdeas, getUserIdeas, addUserIdeas, deleteUserIdea, patchUserIdea
+               userIdeas, getUserIdeas, addUserIdeas, deleteUserIdea, patchUserIdea, getUserIdeaById, updateUserIdea
         }}>
             {props.children}
         </UserIdeaContext.Provider>

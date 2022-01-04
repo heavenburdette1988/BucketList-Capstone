@@ -11,7 +11,7 @@ import './Idea.css'
 
 export const IdeaForm = () => {
     const { ideas ,addIdeas, getIdeas } = useContext(IdeaContext)
-    const {  userIdeas, getUserIdeas  } = useContext(UserIdeaContext)
+    const {   getUserIdeas  } = useContext(UserIdeaContext)
     const { getActivityTypes, userActivityTypes } =useContext(ActivityTypesContext)
 
     const {getAges , ages } =useContext(AgeContext)

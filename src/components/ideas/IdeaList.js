@@ -10,11 +10,11 @@ import { Button } from "react-bootstrap"
 
 import './Idea.css'
 
-export const IdeaList = (props) => {
+export const IdeaList = () => {
   // This state changes when `getIdeas()` is invoked below
    const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
   const [showCompletedUserIdeas, setShowCompletedUserIdeas] = useState(false)
- 
+
   //useEffect - reach out to the world for something
   useEffect(() => {
     // console.log("IdeaList: useEffect - getIdeas")
@@ -33,6 +33,8 @@ export const IdeaList = (props) => {
     {/* <Button onClick={() => navigate("/home/create")}>
     New Idea
 </Button> */}
+
+
   
     <div className="ideas">
       

@@ -1,10 +1,10 @@
 // import React, { useContext, useEffect, useState } from "react"
-import { useContext, useEffect, useState } from "react"
-import {  Button, Card, InputGroup, Modal } from "react-bootstrap"
-import {useNavigate, useParams } from "react-router-dom"
+import { useContext, useState } from "react"
+import {  Button, Card, Modal } from "react-bootstrap"
+import {useNavigate } from "react-router-dom"
 
 
-import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
+// import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaContext } from "./IdeaProvider"
 // import { useNavigate, useParams } from "react-router-dom"
 // // import "./idea.css"
@@ -14,7 +14,7 @@ import { IdeaContext } from "./IdeaProvider"
 
 export const IdeaCard = ({userIdea}) => {
 
-  const {  getUserIdeas, patchUserIdea  } = useContext(UserIdeaContext)
+  // const {  getUserIdeas, patchUserIdea  } = useContext(UserIdeaContext)
 // console.log("usId", userIdea)
 
   const { deleteIdea } = useContext(IdeaContext)
@@ -34,18 +34,18 @@ export const IdeaCard = ({userIdea}) => {
       })
   }
 
-const handleComplete = () => {
-  console.log(handleComplete)
-if (userIdea.completedIdea === true) {
-    patchUserIdea(userIdea.id, false)
-         .then(getUserIdeas) 
-        } else {
-          patchUserIdea(userIdea.id, true)
-          .then(getUserIdeas)
+// const handleComplete = () => {
+//   console.log(handleComplete)
+// if (userIdea.completedIdea === true) {
+//     patchUserIdea(userIdea.id, false)
+//          .then(getUserIdeas) 
+//         } else {
+//           patchUserIdea(userIdea.id, true)
+//           .then(getUserIdeas)
           
-        }
+//         }
         
-         }
+//          }
 
 
   
@@ -88,7 +88,9 @@ if (userIdea.completedIdea === true) {
                  <Button variant="primary" onClick={handleUserIdeaDelete}>
                    Delete
                 </Button>
-                <Button variant="primary" onClick={handleComplete}>
+                <Button variant="primary" onClick={() => {
+      navigate(`/home/edit/${userIdea.id}`)
+    }}>
                   Complete
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>

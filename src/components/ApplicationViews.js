@@ -10,7 +10,10 @@ import { IdeaList } from "./ideas/IdeaList";
 import { IdeaProvider } from "./ideas/IdeaProvider";
 import { AgeProvider} from "./ages/AgeProvider";
 import { UserIdeaProvider } from "./userIdeas/UserIdeasProvider";
-import { IdeaCompletedCard } from "./completedIdeas/CompletedIdeaCard";
+
+import { CompletedIdeaList } from "./completedIdeas/CompletedIdeaList";
+import { CompletedIdeaForm } from "./completedIdeas/CompletedIdeaForm";
+import { CommunityList } from "./communities/CommunityList";
 
 
 
@@ -25,9 +28,9 @@ export default class ApplicationViews extends Component {
       <UserIdeaProvider>
      <IdeaProvider>
          <Routes>
-         <Route path="home/*" element={<><IdeaForm /><IdeaList /></>} />
-         {/* <Route path="home/create/*" element={<IdeaForm />} /> */}
-      
+         <Route path="home/*" element={<><IdeaForm /><IdeaList /><CompletedIdeaList/></>} />
+         <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />      
+         <Route path="community/*" element={<CommunityList />} /> 
         </Routes>            
      </IdeaProvider>
      </UserIdeaProvider>
@@ -35,4 +38,4 @@ export default class ApplicationViews extends Component {
      </AgeProvider>
     );
   }
-}
+} 

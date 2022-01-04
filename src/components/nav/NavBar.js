@@ -15,7 +15,7 @@ class NavBar extends Component {
               
               <Nav className="me-auto">
                 <Nav.Link href="home" >Home</Nav.Link>
-                <Nav.Link href="features">Community Page</Nav.Link>
+                <Nav.Link href="community">Community Page</Nav.Link>
               </Nav>
               </Container>
             </Navbar>
