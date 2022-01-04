@@ -57,13 +57,13 @@ export const IdeaCard = ({userIdea}) => {
    
       
       <Card className="mainCard" style={{ width: '15rem' }}>
-  <Card.Img className="cardImg" variant="top" src={userIdea.type.typeImg}></Card.Img>
+  <Card.Img className="cardImg" variant="top" src={userIdea.type?.typeImg}></Card.Img>
   <Card.Body>
   
     <Card.Title className="title">
-         { userIdea.idea.title }     
+         { userIdea.idea?.title }     
           </Card.Title>
-    <Card.Text className="age"> When to complete by: {userIdea.age.age}
+    <Card.Text className="age"> When to complete by: {userIdea.age?.age}
     </Card.Text>
     
      </Card.Body>
@@ -75,13 +75,13 @@ export const IdeaCard = ({userIdea}) => {
       
              <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton>
-                 <Modal.Title href={userIdea.idea.url} target="_blank"> {userIdea.idea.title }</Modal.Title>
+                 <Modal.Title href={userIdea.idea?.url} target="_blank"> {userIdea.idea?.title }</Modal.Title>
                </Modal.Header>
         
      <Modal.Body>
-       <p>Details: {userIdea.idea.details}</p> 
-       <p>When to complete: {userIdea.age.age}</p>
-       <p>Type of Activity: {userIdea.type.type}</p> 
+       <p>Details: {userIdea.idea?.details}</p> 
+       <p>When to complete: {userIdea.age?.age}</p>
+       <p>Type of Activity: {userIdea.type?.type}</p> 
       </Modal.Body> 
                <Modal.Footer>
           

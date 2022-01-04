@@ -8,15 +8,11 @@ import { Box } from "@mui/system";
 import { Rating, Typography } from "@mui/material";
 import ReactDOM from 'react-dom';
 
-
 export const CompletedIdeaForm = () => {
     const { getUserIdeaById, updateUserIdea, userIdeas } = useContext(UserIdeaContext)
+    
     const [value, setValue] = React.useState(2)
-    /*
-    With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
-    Define the intial state of the form inputs with useState()
-    // */ const dt = null;
-    // const [cdate, setDate] = useState(dt); 
+    
 
     const [completedUserIdea, setCompletedUserIdea] = useState({
 
@@ -78,16 +74,17 @@ export const CompletedIdeaForm = () => {
 
        
         const handleSaveCompletedIdea = () => {
-        
+        console.log("rating", completedUserIdea.rating)
        
               updateUserIdea({
 
              
                   id: UserIdeaId,
-                  rating: completedUserIdea.rating,
+                 
                   note: completedUserIdea.note,
                   completedIdea: true,
-                  completionDate:new Date(completedUserIdea.completionDate).toLocaleDateString('en-us'),
+                  completionDate:completedUserIdea.completionDate,
+                  rating: value,
                   typeId: completedUserIdea.typeId,
                   ageId: completedUserIdea.ageId,
                   ideaId: completedUserIdea.ideaId,
@@ -116,29 +113,26 @@ export const CompletedIdeaForm = () => {
                    onChange={handleControlledInputChange}  />
               </div>
           </fieldset>
-          {/* <fieldset>
-              <div className="form-group">
-                  <label htmlFor="taskDate">Completion Date:</label>
-                  <input hidden type="date" id="completionDate" name="completionDate" required  className="form-control" placeholder="Completion Date" 
-                   onChange={handleControlledInputChange}  defaultValue={userIdeas.completionDate}/>
-              </div>
-          </fieldset> */}
+        
         
           <fieldset>
               <div className="form-group">
-                  <label htmlFor="completedIdeaRating">Rate</label>
-                  <input type="text" id="rating" name="rating" required autoFocus className="form-control" placeholder="Rating" 
-                   onClick={handleControlledInputChange}  />
+                  <label htmlFor="completionDate">Completion Date:</label>
+                  <input type="date" id="completionDate" name="completionDate" required autoFocus className="form-control" 
+                   onChange={handleControlledInputChange}  />
               </div>
           </fieldset> 
-          {/* <Box
+          <Box
       sx={{
         '& > legend': { mt: 2 },
       }}
     >
       <Typography component="legend">Rating</Typography>
       <Rating
+       defaultValue={2.5}  
         name="rating"
+        id="rating"
+        className="form-control"
         value={value} 
         onChange={(handleControlledInputChange, newValue) => {
           setValue(newValue);
@@ -146,7 +140,7 @@ export const CompletedIdeaForm = () => {
       />
 
     </Box>
-   */}
+  
             <Button variant="secondary"
             disabled={isLoading}
           onClick={event => {

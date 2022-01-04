@@ -1,6 +1,10 @@
 
 import { Card } from "react-bootstrap"
 // import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 export const IdeaCompletedCard = ({userIdea}) => {
   const formatDate = date => {
@@ -8,7 +12,7 @@ export const IdeaCompletedCard = ({userIdea}) => {
 
     return new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2]).toString().split(' ').slice(1, 4).join(' ');
   }
-
+  const [value, setValue] = React.useState(2)
 
     return(
     <Card className="mainCard" style={{ width: '15rem' }}>
@@ -24,9 +28,17 @@ export const IdeaCompletedCard = ({userIdea}) => {
       </Card.Text>
       <Card.Text className="details"> Idea Details: {userIdea.idea.details}
       </Card.Text>
-      <Card.Text className="details"> Idea Rating: {userIdea.rating}
-      </Card.Text>
       
+      <Box
+      sx={{
+        '& > legend': { mt: 2 },
+      }}
+    >
+     
+      <Typography component="legend">Your Rating:</Typography>
+      <Rating name="read-only" value={userIdea.rating} readOnly />
+     
+    </Box>
        </Card.Body>
        </Card>
 )

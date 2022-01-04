@@ -30,7 +30,7 @@ export default class ApplicationViews extends Component {
          <Routes>
          <Route path="home/*" element={<><IdeaForm /><IdeaList /><CompletedIdeaList/></>} />
          <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />      
-         <Route path="community/*" element={<CommunityList />} /> 
+         {/* <Route path="community/*" element={<CommunityList />} />  */}
         </Routes>            
      </IdeaProvider>
      </UserIdeaProvider>
