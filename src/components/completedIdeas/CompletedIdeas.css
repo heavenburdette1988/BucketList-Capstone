@@ -1,0 +1,12 @@
+.completedIdeas{
+    display: flex;
+    flex-direction: column;
+    width: 32vw;
+    justify-content: space-between;
+    position:absolute;
+    top: 215px;
+    right:25px;
+    
+  
+}  
+/* main container for idea card */

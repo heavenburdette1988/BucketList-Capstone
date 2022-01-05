@@ -7,6 +7,7 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
 import { Box } from "@mui/system";
 import { Rating, Typography } from "@mui/material";
 import ReactDOM from 'react-dom';
+import './CompletedIdeas.css'
 
 export const CompletedIdeaForm = () => {
     const { getUserIdeaById, updateUserIdea, userIdeas } = useContext(UserIdeaContext)

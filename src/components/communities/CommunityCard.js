@@ -1,8 +1,8 @@
 
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Button, Card } from "react-bootstrap"
 import { useNavigate, useParams } from "react-router-dom"
-import { IdeaContext } from "../ideas/IdeaProvider"
+
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
 
@@ -11,26 +11,26 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
 export const CommunityCard = ({ idea }) => {
     
-    const { getUserIdeas, userIdeas, addUserIdeas, getUserIdeaById } = useContext(UserIdeaContext)
+    const { userIdeas,addUserIdeas } = useContext(UserIdeaContext)
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
     
-    const {AddIdeaId} = useParams();
+    // const {AddIdeaId} = useParams();
 
-    const [userIdea, setUserIdea] = useState({
+    // const [userIdea, setUserIdea] = useState({
         
     
    
-    rating: 0,
-      notes: "",
-      completedIdea: false,
-      completionDate: null,
-      typeId: 0,
-      ageId: 0,
-      userId: currentUser,
-      ideaId:idea.id,
+    // rating: 0,
+    //   notes: "",
+    //   completedIdea: false,
+    //   completionDate: null,
+    //   typeId: 0,
+    //   ageId: 0,
+    //   userId: currentUser,
+    //   ideaId:idea.id,
       
     
-    })
+    // })
 
     // const [isLoading, setIsLoading] = useState(true);
 
@@ -55,8 +55,8 @@ export const CommunityCard = ({ idea }) => {
       //   window.alert("Idea Already on your list.")
       
       // } else {
-        addUserIdeas(userIdea)
-        .then(() => navigate(`/community/add/${idea.id}`))
+        // addUserIdeas(userIdea)
+        navigate(`/community/add/${idea.id}`)
      }
 
     return(

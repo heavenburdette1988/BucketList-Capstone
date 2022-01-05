@@ -2,22 +2,23 @@
 import { useContext, useState } from "react"
 import {  Button, Card, Modal } from "react-bootstrap"
 import {useNavigate } from "react-router-dom"
+import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
-
+import './Idea.css'
 // import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaContext } from "./IdeaProvider"
 // import { useNavigate, useParams } from "react-router-dom"
 // // import "./idea.css"
-// import { IdeaContext } from "./ideaProvider"
+
 
 
 
 export const IdeaCard = ({userIdea}) => {
 
-  // const {  getUserIdeas, patchUserIdea  } = useContext(UserIdeaContext)
+  const {   deleteUserIdea  } = useContext(UserIdeaContext)
 // console.log("usId", userIdea)
 
-  const { deleteIdea } = useContext(IdeaContext)
+
    
 
   const [show, setShow] = useState(false);
@@ -27,8 +28,8 @@ export const IdeaCard = ({userIdea}) => {
 	const navigate = useNavigate();
 
   const handleUserIdeaDelete = () => {
-    console.log("deleteIdeaIds",userIdea.idea.id)
-    deleteIdea(userIdea.idea.id)
+    console.log("deleteIdeaIds",userIdea.id)
+    deleteUserIdea(userIdea.id)
       .then(() => {
         navigate(handleClose)
       })

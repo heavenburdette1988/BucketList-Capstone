@@ -11,7 +11,8 @@ export const IdeaProvider = (props) => {
     const [ideas, setIdeas] = useState([])
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
     const { getUserIdeas } = useContext(UserIdeaContext)
-    
+    const [ searchIdeas, setSearchIdeas ] = useState("")
+
     const getIdeas = () => {
         return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
             .then(res => res.json())
@@ -119,7 +120,7 @@ export const IdeaProvider = (props) => {
 
     return (
         <IdeaContext.Provider value={{
-            ideas, getIdeaById, getIdeas, addIdeas, updateIdea, deleteIdea
+            ideas, getIdeaById, getIdeas, addIdeas, updateIdea, deleteIdea, searchIdeas, setSearchIdeas
         }}>
             {props.children}
         </IdeaContext.Provider>

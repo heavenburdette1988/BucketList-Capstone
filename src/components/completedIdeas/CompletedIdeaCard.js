@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
+import './CompletedIdeas.css'
+
 
 export const IdeaCompletedCard = ({userIdea}) => {
 

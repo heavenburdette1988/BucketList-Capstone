@@ -15,9 +15,13 @@ export const IdeaList = () => {
    const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
   const [showCompletedUserIdeas, setShowCompletedUserIdeas] = useState(false)
 
+ 
+
   //useEffect - reach out to the world for something
   useEffect(() => {
     console.log("IdeaList: useEffect - getUserIdeas", getUserIdeas)
+
+    
    getUserIdeas()
     }, [])
     
@@ -34,10 +38,10 @@ export const IdeaList = () => {
     New Idea
 </Button> */}
 
-<button onClick={() => navigate("/home/create")}>
+<Button variant="primary" onClick={() => navigate("/home/create")}>
     New Idea
-</button>
-  
+</Button>
+  <h1 className="IdeaList">Bucket List Ideas</h1>
     <div className="ideas">
      
     {

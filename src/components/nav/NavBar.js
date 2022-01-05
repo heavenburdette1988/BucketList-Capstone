@@ -11,11 +11,11 @@ class NavBar extends Component {
             <>
             <Navbar bg="dark" variant="dark">
               <Container>
-              <Navbar.Brand href="#home"><Image src={require('../image/TrapperKeeperLogo.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></Navbar.Brand>
+              <Navbar.Brand href="home"><Image src={require('../image/TrapperKeeperLogo.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></Navbar.Brand>
               
               <Nav className="me-auto">
-                <Nav.Link href="home" >Home</Nav.Link>
-                <Nav.Link href="community">Community Page</Nav.Link>
+                <Nav.Link href="/home" >Home</Nav.Link>
+                <Nav.Link href="/community">Community Page</Nav.Link>
               </Nav>
               </Container>
             </Navbar>

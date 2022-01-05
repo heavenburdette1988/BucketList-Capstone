@@ -10,13 +10,13 @@ export const UserIdeaProvider = (props) => {
     
 //will need to update fetch("") calls
      const getUserIdeas = () => {
-        return fetch(`http://localhost:8088/userIdeas?userId=${currentUser}&_expand=idea&_expand=type&_expand=age`)
+        return fetch(`http://localhost:8088/userIdeas?userId=${currentUser}&_expand=idea&_expand=type&_expand=age&_expand=user`)
         .then(res => res.json())
         .then(setUserIdeas)
     }
 
     const addUserIdeas = (idea) => {
-        return fetch('http://localhost:8088/userIdeas?_expand=idea', {
+        return fetch('http://localhost:8088/userIdeas', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

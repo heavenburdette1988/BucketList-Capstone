@@ -1,18 +1,22 @@
 import { useContext, useEffect, useState } from "react"
+import { IdeaContext } from "../ideas/IdeaProvider"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaCompletedCard } from "./CompletedIdeaCard"
 
-
+import './CompletedIdeas.css'
 
 
 export const CompletedIdeaList = () => {
     // This state changes when `getIdeas()` is invoked below
      const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
+     
+
     const [showCompletedUserIdeas, setShowCompletedUserIdeas] = useState(true)
-   
+     
     //useEffect - reach out to the world for something
     useEffect(() => {
       // console.log("IdeaList: useEffect - getIdeas")
+         
      getUserIdeas()
       }, [])
       
@@ -28,12 +32,9 @@ export const CompletedIdeaList = () => {
 
     
       <div className="completedIdeas">
-        <h2>Completed Ideas</h2>
-        {/* {console.log("IdeaList: Render", ideas)}
-       */}
-        {
-  
-   
+       
+    <h2>Completed Ideas</h2>
+   { 
   
           userIdeas.filter(userIdea => userIdea.completedIdea === showCompletedUserIdeas).map(userIdea =>{
           

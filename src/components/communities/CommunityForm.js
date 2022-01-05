@@ -9,19 +9,24 @@ import { Rating, Typography } from "@mui/material";
 import ReactDOM from 'react-dom';
 import { ActivityTypesContext } from "../activityTypes/ActivityTypesProvider";
 import { AgeContext } from "../ages/AgeProvider";
+import { IdeaContext } from "../ideas/IdeaProvider";
 
 export const CommunityForm = () => {
-    const { getUserIdeaById, updateUserIdea, userIdeas} = useContext(UserIdeaContext)
+    const { getUserIdeaById, updateUserIdea, userIdeas, addUserIdeas} = useContext(UserIdeaContext)
+    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+    const {getIdeaById} = useContext(IdeaContext)
     
-    const { getActivityTypes, userActivityTypes } =useContext(ActivityTypesContext)
+    const { getActivityTypes, userActivityTypes } = useContext(ActivityTypesContext)
 
     const {getAges , ages } =useContext(AgeContext)
+
     const [isLoading, setIsLoading] = useState(true);
-
     const {AddIdeaId} = useParams();
-    const [addUserIdea, setAddUserIdea] = useState({
+   const navigate = useNavigate();  
 
-      id:0,
+    const [userIdea, setUserIdea] = useState({
+
+     id:0,
       rating: 0,
       note: "",
       completedIdea: true,
@@ -37,12 +42,12 @@ export const CommunityForm = () => {
 
       
     
-    const navigate = useNavigate();  
+ 
 
  useEffect(() => {
           //todo trouble shoot this to get ideas in state
-        
-          getUserIdeaById(AddIdeaId).then(setAddUserIdea).then(getActivityTypes).then(getAges)
+        console.log(userIdea)
+          getIdeaById(AddIdeaId).then(setUserIdea).then(getActivityTypes).then(getAges)
  
                  setIsLoading(false)
           
@@ -64,43 +69,41 @@ export const CommunityForm = () => {
      
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
-        const newAddIdea = { ...addUserIdea } // this is giving newAnimal state and properties
+        const newUserIdea = { ...userIdea } // this is giving newAnimal state and properties
       
         
         /* Animal is an object with properties.
         Set the property to the new value
         using object bracket notation. */
-        newAddIdea[event.target.name] = event.target.value
+        newUserIdea[event.target.name] = event.target.value
         // update state
-        setAddUserIdea(newAddIdea)
+        setUserIdea(newUserIdea)
       }
 
 
      
        
         const handleSaveCompletedIdea = () => {
-        
+       console.log(userIdea)
        
-              updateUserIdea({
-
-             
-                  id: AddIdeaId,
-                 
-                  note: addUserIdea.note,
-                  completedIdea: false,
-                  completionDate:addUserIdea.completionDate,
-                  rating: addUserIdea.rating,
-                  typeId: +addUserIdea.typeId,
-                  ageId: +addUserIdea.ageId,
-                  ideaId: addUserIdea.ideaId,
-                 userId: parseInt(addUserIdea.userId)
-                  
-              
-              })
-
+          const userIdeaForDatabase = {
+            
+            
+         
+            rating: "",
+            notes: "",
+            completedIdea: false,
+            completionDate: "",
+            typeId: +userIdea.typeId,
+            ageId: +userIdea.ageId,
+            ideaId: +AddIdeaId,
+            userId: userIdea.userId
+         
+          } 
+              addUserIdeas(userIdeaForDatabase)
               .then(() => navigate(`/home`))
             
-            }
+            } 
                 
 
             
@@ -110,7 +113,8 @@ export const CommunityForm = () => {
       
     return (
       <form className="addIdeaForm">
-          <h2 className="addIdeaForm__title">Add Idea</h2>
+          <p className="addIdeaForm__title">Please select below options for the</p> 
+          <h2>{userIdea.title}</h2>
         
           <fieldset>
               <div className="form-group">
