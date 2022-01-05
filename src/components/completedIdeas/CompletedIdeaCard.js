@@ -1,12 +1,15 @@
 
-import { Card } from "react-bootstrap"
+import { Card, Button, Modal } from "react-bootstrap"
 // import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import { useState } from "react";
 
 export const IdeaCompletedCard = ({userIdea}) => {
+
+  console.log(userIdea)
   const formatDate = date => {
     const dateSplit = date.split('-');
 
@@ -14,6 +17,9 @@ export const IdeaCompletedCard = ({userIdea}) => {
   }
   const [value, setValue] = React.useState(2)
 
+const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
     return(
     <Card className="mainCard" style={{ width: '15rem' }}>
     
@@ -22,12 +28,9 @@ export const IdeaCompletedCard = ({userIdea}) => {
       <Card.Title className="title">
            { userIdea.idea.title }     
             </Card.Title>
-      <Card.Text className="date"> Complete Date: {formatDate(userIdea.completionDate)}
+      <Card.Text className="date"> <strong>Complete Date: </strong>{formatDate(userIdea.completionDate)}
       </Card.Text>
-      <Card.Text className="note"> User Completed Notes: {userIdea.note}
-      </Card.Text>
-      <Card.Text className="details"> Idea Details: {userIdea.idea.details}
-      </Card.Text>
+     
       
       <Box
       sx={{
@@ -40,6 +43,32 @@ export const IdeaCompletedCard = ({userIdea}) => {
      
     </Box>
        </Card.Body>
+
+       <Button variant="primary" onClick={handleShow}>
+               Details
+             </Button>
+             <Modal show={show} onHide={handleClose}>
+       <Modal.Header closeButton>
+                 <Modal.Title href={userIdea.idea?.url} target="_blank"> {userIdea.idea?.title }</Modal.Title>
+       </Modal.Header>
+        
+        <Modal.Body>
+          <p><strong>Details:</strong> {userIdea.idea?.details}</p> 
+          <p><strong>Type of Activity:</strong> {userIdea.type?.type}</p> 
+          <p><strong>User Completion Notes: </strong>{userIdea.note}</p> 
+          <Card.Link variant="primary" name="url" target="_blank" rel="noreferrer noopener" href={userIdea.idea?.url} >Explore</Card.Link>
+         </Modal.Body> 
+         
+                  <Modal.Footer>
+             
+                  
+                   
+                   <Button variant="secondary" onClick={handleClose}>
+                      Close
+                   </Button>
+                 </Modal.Footer>
+   
+                </Modal>
        </Card>
 )
 }

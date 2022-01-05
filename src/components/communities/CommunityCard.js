@@ -10,13 +10,15 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
 
 export const CommunityCard = ({ idea }) => {
- 
+    
     const { getUserIdeas, userIdeas, addUserIdeas, getUserIdeaById } = useContext(UserIdeaContext)
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
     
-  
+    // const {UserIdeaId} = useParams();
+
     const [userIdea, setUserIdea] = useState({
         
+    
    
     rating: 0,
       notes: "",
@@ -29,13 +31,16 @@ export const CommunityCard = ({ idea }) => {
       
     
     })
+
+    // const [isLoading, setIsLoading] = useState(true);
     
     const navigate = useNavigate(); 
 
-    useEffect(() => {
-       getUserIdeas()
+    // useEffect(() => {
         
-      }, []) 
+ 
+        
+    //   }, []) 
 
    
 
@@ -43,10 +48,8 @@ export const CommunityCard = ({ idea }) => {
         event.preventDefault()
 
         
-        addUserIdeas(userIdea).then(
-            getUserIdeas(userIdea.id)
-        )
-        .then(() => navigate(`/community/add/${userIdea.Id}`))
+        addUserIdeas(userIdea)
+        .then(() => navigate(`/community/add/${userIdea.id}`))
      }
 
     return(
@@ -78,7 +81,8 @@ export const CommunityCard = ({ idea }) => {
   
   
         
-               <Button variant="primary" onClick={handleAddUserIdea}>
+               <Button variant="primary"
+                 onClick={handleAddUserIdea}>
                Add idea to my list
               </Button>
          

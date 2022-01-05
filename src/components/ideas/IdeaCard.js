@@ -65,7 +65,7 @@ export const IdeaCard = ({userIdea}) => {
           </Card.Title>
     <Card.Text className="age"> When to complete by: {userIdea.age?.age}
     </Card.Text>
-    
+    <Card.Link variant="primary" name="url" target="_blank" rel="noreferrer noopener" href={userIdea.idea?.url} >Explore</Card.Link>
      </Card.Body>
 
   {/* Details Button starts here   */}
@@ -84,7 +84,7 @@ export const IdeaCard = ({userIdea}) => {
        <p>Type of Activity: {userIdea.type?.type}</p> 
       </Modal.Body> 
                <Modal.Footer>
-          
+               
                  <Button variant="primary" onClick={handleUserIdeaDelete}>
                    Delete
                 </Button>
