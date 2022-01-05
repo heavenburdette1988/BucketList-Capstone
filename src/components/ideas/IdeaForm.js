@@ -81,7 +81,7 @@ export const IdeaForm = () => {
 
       
       const typeId = parseInt(idea.typeId)
-      ideas.typeId = typeId
+      idea.typeId = typeId
     
       const ageId = parseInt(idea.ageId)
       idea.ageId = ageId
