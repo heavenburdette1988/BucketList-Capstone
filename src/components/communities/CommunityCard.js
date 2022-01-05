@@ -14,7 +14,7 @@ export const CommunityCard = ({ idea }) => {
     const { getUserIdeas, userIdeas, addUserIdeas, getUserIdeaById } = useContext(UserIdeaContext)
     const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
     
-    // const {UserIdeaId} = useParams();
+    const {AddIdeaId} = useParams();
 
     const [userIdea, setUserIdea] = useState({
         
@@ -27,29 +27,36 @@ export const CommunityCard = ({ idea }) => {
       typeId: 0,
       ageId: 0,
       userId: currentUser,
-    ideaId:idea.id,
+      ideaId:idea.id,
       
     
     })
 
     // const [isLoading, setIsLoading] = useState(true);
+
+  // 
     
     const navigate = useNavigate(); 
 
-    // useEffect(() => {
-        
- 
-        
-    //   }, []) 
+    
 
    
 
      const handleAddUserIdea = (event) => {
         event.preventDefault()
+      
+      //   const userId = parseInt(userIdeas.userId)
+      // userIdeas.userId = userId
+    
+      // const userIdeaId = parseInt(userIdeas.ideaId)
+      // userIdeas.ideaId = userIdeaId
 
-        
+      // if (userId === currentUser) {
+      //   window.alert("Idea Already on your list.")
+      
+      // } else {
         addUserIdeas(userIdea)
-        .then(() => navigate(`/community/add/${userIdea.id}`))
+        .then(() => navigate(`/community/add/${idea.id}`))
      }
 
     return(

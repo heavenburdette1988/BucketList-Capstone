@@ -29,7 +29,8 @@ export default class ApplicationViews extends Component {
       <UserIdeaProvider>
      <IdeaProvider>
          <Routes>
-         <Route path="home/*" element={<><IdeaForm /><IdeaList /><CompletedIdeaList/></>} />
+         <Route path="home/*" element={<><IdeaList /><CompletedIdeaList/></>} />
+         <Route path="home/create/*" element={<IdeaForm />} />
          <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />       
          <Route path="community/*" element={<CommunityList />} /> 
          <Route path="community/add/:AddIdeaId*" element={<CommunityForm />} /> 

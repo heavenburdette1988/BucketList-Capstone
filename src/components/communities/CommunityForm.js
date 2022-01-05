@@ -90,8 +90,8 @@ export const CommunityForm = () => {
                   completedIdea: false,
                   completionDate:addUserIdea.completionDate,
                   rating: addUserIdea.rating,
-                  typeId: addUserIdea.typeId,
-                  ageId: addUserIdea.ageId,
+                  typeId: +addUserIdea.typeId,
+                  ageId: +addUserIdea.ageId,
                   ideaId: addUserIdea.ideaId,
                  userId: parseInt(addUserIdea.userId)
                   

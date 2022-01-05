@@ -70,6 +70,7 @@ export const IdeaForm = () => {
       Set the property to the new value
       using object bracket notation. */
       newIdea[event.target.name] = event.target.value
+    
       // update state
       setIdea(newIdea)
     }

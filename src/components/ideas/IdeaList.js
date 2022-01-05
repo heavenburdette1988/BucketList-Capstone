@@ -34,16 +34,15 @@ export const IdeaList = () => {
     New Idea
 </Button> */}
 
-
+<button onClick={() => navigate("/home/create")}>
+    New Idea
+</button>
   
     <div className="ideas">
      
-      {/* {console.log("IdeaList: Render", ideas)}
-     */}
-      {
+    {
 
-        // const theUserIdea = userIdeas.filter(ui => i.userId.includes(...currentUser))
-
+ 
  //todo Add user Welcome Section
 
         userIdeas.filter(userIdea => userIdea.completedIdea === showCompletedUserIdeas).map(userIdea =>{

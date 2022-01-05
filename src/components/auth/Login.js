@@ -22,7 +22,7 @@ export const Login = (props) => {
     .then( userExists => {
       if (userExists) {
         localStorage.setItem('react_trapperKeeper_user', userExists.id);
-        navigate('/');
+        navigate('/home');
       } else {
         setShow(true);
       }

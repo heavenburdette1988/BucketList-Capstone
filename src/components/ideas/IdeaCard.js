@@ -27,8 +27,8 @@ export const IdeaCard = ({userIdea}) => {
 	const navigate = useNavigate();
 
   const handleUserIdeaDelete = () => {
-    console.log("deleteIdeaIds",userIdea.id)
-    deleteIdea(userIdea.id)
+    console.log("deleteIdeaIds",userIdea.idea.id)
+    deleteIdea(userIdea.idea.id)
       .then(() => {
         navigate(handleClose)
       })
