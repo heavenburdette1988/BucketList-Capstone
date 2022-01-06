@@ -22,6 +22,7 @@ import { Home } from "./home/Home";
 
 
 
+
 export default class ApplicationViews extends Component {
 
   render() {
@@ -35,7 +36,7 @@ export default class ApplicationViews extends Component {
          <Route path="home/*" element={<><Home/><IdeaList /><CompletedIdeaList/></>} />
          <Route path="home/create/*" element={<IdeaForm />} />
          <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />       
-         <Route path="community/*" element={<><IdeaSearch/><CommunityList /></>} /> 
+         <Route path="community/*" element={<><IdeaSearch/><CommunityList /> </>} /> 
          <Route path="community/add/:AddIdeaId*" element={<CommunityForm />} /> 
         </Routes>            
      </IdeaProvider>

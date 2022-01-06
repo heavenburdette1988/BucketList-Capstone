@@ -14,7 +14,7 @@ export const IdeaProvider = (props) => {
     const [ searchIdeas, setSearchIdeas ] = useState("")
 
     const getIdeas = () => {
-        return fetch(`http://localhost:8088/Ideas?_embed=userIdeas`)
+        return fetch(`http://localhost:8088/ideas?_embed=userIdeas`)
             .then(res => res.json())
         .then(setIdeas)
            

@@ -46,7 +46,7 @@ export const CommunityForm = () => {
 
  useEffect(() => {
           //todo trouble shoot this to get ideas in state
-        console.log(userIdea.ageId)
+        
           getIdeaById(AddIdeaId).then(setUserIdea).then(getActivityTypes).then(getAges)
  
                  setIsLoading(false)
@@ -63,7 +63,7 @@ export const CommunityForm = () => {
     //   setDate(dt);
     // }
 
-    ages.forEach(element => console.log(element.id))
+   
 
     const handleControlledInputChange = (event) => {
      
@@ -82,7 +82,6 @@ export const CommunityForm = () => {
 
 
      
-       
         const handleSaveCompletedIdea = () => {
        console.log(userIdeas)
        
@@ -101,16 +100,10 @@ export const CommunityForm = () => {
          
           } 
            
-        const typeId = userIdeaForDatabase.typeId
-        userIdeaForDatabase.typeId = typeId
+         
     
-      const ageId = userIdeaForDatabase.ageId
-      userIdeaForDatabase.ageId = ageId
-     
-     const agesLength = () => ages.forEach(element => element.id)
-     const typesLength = () => userActivityTypes.forEach(element => element.id)     
-
-      if (ageId !== agesLength  || typeId !== typesLength ) {
+        
+      if (!userIdeaForDatabase.ageId || !userIdeaForDatabase.typeId) {
         window.alert("Please select a type or priority.")
       
       } else {
@@ -135,7 +128,7 @@ export const CommunityForm = () => {
               <div className="form-group">
                   <label htmlFor="activityTypes">Activity Type: </label>
                   <select defaultValue={ages.id} name="typeId" id="typeId" className="form-control"  onChange={handleControlledInputChange}>
-                      <option >Select a Type</option>
+                      <option value="0">Select a Type</option>
                       {userActivityTypes.map(a => (
                           <option key={a.id} value={a.id}>
                               {a.type}
@@ -149,7 +142,7 @@ export const CommunityForm = () => {
               <div className="form-group">
                   <label htmlFor="ages">Age range you want to complete in: </label>
                   <select defaultValue={ages.id} name="ageId" id="ageId" className="form-control"  onChange={handleControlledInputChange}>
-                      <option >Select a Priority</option>
+                      <option value="0">Select a Priority</option>
                       {ages.map(p => (
                           <option key={p.id} value={p.id}>  
                               {p.age}

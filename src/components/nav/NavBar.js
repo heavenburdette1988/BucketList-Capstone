@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container, Image, Nav, Navbar } from "react-bootstrap"
+import { Logout } from "../auth/Logout"
 
 
 
@@ -17,6 +18,7 @@ class NavBar extends Component {
                 <Nav.Link href="/home" >Home</Nav.Link>
                 <Nav.Link href="/community">Community Page</Nav.Link>
               </Nav>
+              <Logout/>
               </Container>
             </Navbar>
           </>
