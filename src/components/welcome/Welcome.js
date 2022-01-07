@@ -1,16 +1,13 @@
 
 
-import React, { useEffect, useState } from "react"
-// import { useParams } from "react-router-dom"
-// import { Login } from "../auth/Login"
+
 import "./Welcome.css"
 
 
 export const Welcome = () => {
 
 
-  // const theUserId = {JSON.parse(localStorage.getItem('react_trapperKeeper_user')).email}
-  // const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+
 
  const PropsAndState = ({email})=>{
    return(
