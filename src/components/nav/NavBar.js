@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container, Image, Nav, Navbar } from "react-bootstrap"
 import { Logout } from "../auth/Logout"
+import { Home } from "../home/Home"
+
 
 
 
@@ -20,8 +22,11 @@ class NavBar extends Component {
               </Nav>
               <Logout/>
               </Container>
+               
             </Navbar>
-          </>
+           {/* <Home/> */}
+               </>
+              
         )
     }
 }

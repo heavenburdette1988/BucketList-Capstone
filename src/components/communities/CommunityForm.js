@@ -13,6 +13,7 @@ import { IdeaContext } from "../ideas/IdeaProvider";
 
 export const CommunityForm = () => {
     const { getUserIdeaById, updateUserIdea, userIdeas, addUserIdeas} = useContext(UserIdeaContext)
+    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
   
     const {getIdeaById} = useContext(IdeaContext)
     
@@ -96,7 +97,7 @@ export const CommunityForm = () => {
             typeId: +userIdea.typeId,
             ageId: +userIdea.ageId,
             ideaId: +AddIdeaId,
-            userId: userIdea.userId
+            userId: currentUser
          
           } 
            

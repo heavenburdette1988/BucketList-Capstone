@@ -43,6 +43,7 @@ export const CommunityList = () => {
         <CommunityRandomGenerator ideas={ideas} length={ideas.length} />
         <h2>Community Ideas</h2>
         {
+          
         filteredIdeas.map(idea => {
           return (          
           <CommunityCard

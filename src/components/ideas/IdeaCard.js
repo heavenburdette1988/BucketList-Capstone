@@ -76,7 +76,7 @@ export const IdeaCard = ({userIdea}) => {
       
              <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton>
-                 <Modal.Title href={userIdea.idea?.url} target="_blank"> {userIdea.idea?.title }</Modal.Title>
+                 <Modal.Title > {userIdea.idea?.title }</Modal.Title>
                </Modal.Header>
         
      <Modal.Body>

@@ -33,34 +33,31 @@ export const IdeaList = () => {
   return (
  
     <>
-   
-    {/* <Button onClick={() => navigate("/home/create")}>
-    New Idea
-</Button> */}
 
 <Button variant="primary" onClick={() => navigate("/home/create")}>
     New Idea
 </Button>
-  <h1 className="IdeaList">Bucket List Ideas</h1>
+ 
     <div className="ideas">
-     
+      <h1 className="IdeaList">Bucket List Ideas</h1>
     {
 
- 
  //todo Add user Welcome Section
 
         userIdeas.filter(userIdea => userIdea.completedIdea === showCompletedUserIdeas).map(userIdea =>{
         
-            // const theUserIdea  = ideas.find(i => i.id === userIdeas.id)
-            // console.log("idea",theUserIdea)
-     
           
-          return <IdeaCard 
-        
+    
+          
+          return <> 
+          
+          <IdeaCard 
+       
           key={userIdea.id}
           userIdea={userIdea} 
           
-          />
+          /> 
+          </>
 
          
 
@@ -69,6 +66,7 @@ export const IdeaList = () => {
            })
            
       }
+     
     </div> 
     </>
 
