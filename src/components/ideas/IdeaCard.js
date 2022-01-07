@@ -5,10 +5,6 @@ import {useNavigate } from "react-router-dom"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
 import './Idea.css'
-// import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
-import { IdeaContext } from "./IdeaProvider"
-// import { useNavigate, useParams } from "react-router-dom"
-// // import "./idea.css"
 
 
 
@@ -16,7 +12,7 @@ import { IdeaContext } from "./IdeaProvider"
 export const IdeaCard = ({userIdea}) => {
 
   const {   deleteUserIdea  } = useContext(UserIdeaContext)
-// console.log("usId", userIdea)
+
 
 
    
@@ -35,18 +31,6 @@ export const IdeaCard = ({userIdea}) => {
       })
   }
 
-// const handleComplete = () => {
-//   console.log(handleComplete)
-// if (userIdea.completedIdea === true) {
-//     patchUserIdea(userIdea.id, false)
-//          .then(getUserIdeas) 
-//         } else {
-//           patchUserIdea(userIdea.id, true)
-//           .then(getUserIdeas)
-          
-//         }
-        
-//          }
 
 
   
@@ -110,8 +94,3 @@ export const IdeaCard = ({userIdea}) => {
      
 )
 }
-//May add image from types api to easily recognize the type of activity.
-//need to figure out the embed vs expand in provider
-// userActivityTypes.map(type => {
-//   return <li key={type.id} value={type.id}>
-//   {type.type}</li>

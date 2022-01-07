@@ -6,9 +6,10 @@ import { IdeaContext } from "./IdeaProvider"
 import { IdeaCard } from "./IdeaCard"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { useNavigate } from "react-router-dom"
-import { Button } from "react-bootstrap"
+import { Button, Image } from "react-bootstrap"
 
 import './Idea.css'
+import { CompletedIdeaList } from "../completedIdeas/CompletedIdeaList"
 
 export const IdeaList = () => {
   // This state changes when `getIdeas()` is invoked below
@@ -34,12 +35,19 @@ export const IdeaList = () => {
  
     <>
 
+
+
+<div className="mainContainer">
+  {/* <div className="logo"><Image className="logoImage" src={require('../image/NavBarImage.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></div> */}
+
 <Button variant="primary" onClick={() => navigate("/home/create")}>
     New Idea
 </Button>
- 
-    <div className="ideas">
-      <h1 className="IdeaList">Bucket List Ideas</h1>
+
+    <div className="ideasMainContainer">
+  
+      <div className="ideasContainer">
+         <h2 className="IdeaListTitle">Bucket List Ideas</h2>
     {
 
  //todo Add user Welcome Section
@@ -65,9 +73,13 @@ export const IdeaList = () => {
          
            })
            
-      }
-     
-    </div> 
+      }</div>
+      <div className="completedIdeas">
+      <h2 className="IdeaListTitle">Your Accomplished Ideas</h2>
+     <CompletedIdeaList/>
+     </div>
+    </div>
+     </div>
     </>
 
   )

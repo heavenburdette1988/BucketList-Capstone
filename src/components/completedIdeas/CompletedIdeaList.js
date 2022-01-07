@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { IdeaContext } from "../ideas/IdeaProvider"
+
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaCompletedCard } from "./CompletedIdeaCard"
 
@@ -33,7 +33,7 @@ export const CompletedIdeaList = () => {
     
       <div className="completedIdeas">
        
-    <h2>Completed Ideas</h2>
+   
    { 
   
           userIdeas.filter(userIdea => userIdea.completedIdea === showCompletedUserIdeas).map(userIdea =>{

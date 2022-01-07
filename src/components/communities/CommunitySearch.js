@@ -6,8 +6,7 @@ export const IdeaSearch = () => {
   const { setSearchIdeas } = useContext(IdeaContext)
 
   return (
-    <>
-      Community Idea Search:
+    <>      
       <input type="text"
         className="input--wide"
         onKeyUp={(event) => setSearchIdeas(event.target.value)}

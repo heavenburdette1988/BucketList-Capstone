@@ -1,11 +1,10 @@
 
 
 
-import { useContext, useEffect, useState } from "react"
 import { Button } from "react-bootstrap"
 
 import { useNavigate } from "react-router-dom"
-import { IdeaContext, IdeaProvider } from "../ideas/IdeaProvider"
+
 import { CommunityCard } from "./CommunityCard"
 
 
@@ -25,15 +24,16 @@ export const CommunityRandomGenerator = ({ ideas }) => {
 
 
 
-    const navigate = useNavigate();
+    
 
 
 
 
     return (
         <>
-            <h2>Random</h2>
+           <div className="randomIdea">
             {
+                
                 <CommunityCard idea={ideas.map((idea, i) => {
                     const ideaLength = ideas.length
                     const randomIdea = Math.floor(Math.random() * ideaLength)
@@ -44,7 +44,7 @@ export const CommunityRandomGenerator = ({ ideas }) => {
         <Button variant="primary"
          onClick={refreshPage}>Generate New Idea</Button>
 
-
+</div>
 
 
         </>

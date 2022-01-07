@@ -17,7 +17,7 @@ export const IdeaCompletedCard = ({userIdea}) => {
 
     return new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2]).toString().split(' ').slice(1, 4).join(' ');
   }
-  const [value, setValue] = React.useState(2)
+  
 
 const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);

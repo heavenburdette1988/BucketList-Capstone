@@ -3,12 +3,13 @@ import { CommunityCard } from "./CommunityCard"
 
 import { IdeaContext } from "../ideas/IdeaProvider"
 import { CommunityRandomGenerator } from "./CommunityRandomGenerator"
-
+import './Community.css'
+import { IdeaSearch } from "./CommunitySearch"
 export const CommunityList = () => {
   // This state changes when `getIdeas()` is invoked below
-  const { ideas, getIdeas, searchIdeas, setSearchIdeas } = useContext(IdeaContext)
+  const { ideas, getIdeas, searchIdeas } = useContext(IdeaContext)
   const [filteredIdeas, setFilteredIdeas] = useState([])
-  const [length, setLength] = useState(0)
+
 
 
 
@@ -39,9 +40,13 @@ export const CommunityList = () => {
 
     <>
 
-      <div className="communityIdeas">
-        <CommunityRandomGenerator ideas={ideas} length={ideas.length} />
-        <h2>Community Ideas</h2>
+      <div className="communityIdeasMain">
+      
+        
+        <div className="communityIdeaList">
+          <div className="search"><IdeaSearch/></div>
+          <h2 className="communityListTitle">Community Ideas</h2>
+          
         {
           
         filteredIdeas.map(idea => {
@@ -52,9 +57,11 @@ export const CommunityList = () => {
                   
         )})
        
-        }
-
-
+        }</div>
+        <div className="communityGeneratorList">
+          <h2 className="randomTitle">Generate a Random Idea</h2>
+  <CommunityRandomGenerator ideas={ideas} length={ideas.length} />
+</div>
       </div>
     </>
 

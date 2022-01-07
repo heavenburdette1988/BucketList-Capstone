@@ -9,7 +9,7 @@ export const IdeaContext = createContext()
 
 export const IdeaProvider = (props) => {
     const [ideas, setIdeas] = useState([])
-    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+    
     const { getUserIdeas } = useContext(UserIdeaContext)
     const [ searchIdeas, setSearchIdeas ] = useState("")
 

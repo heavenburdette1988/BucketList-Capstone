@@ -21,7 +21,8 @@ export const Login = (props) => {
     existingUserCheck()
     .then( userExists => {
       if (userExists) {
-        localStorage.setItem('react_trapperKeeper_user', userExists.id);
+        localStorage.setItem('react_trapperKeeper_user', JSON.stringify(userExists));
+       
         navigate('/home');
       } else {
         setShow(true);

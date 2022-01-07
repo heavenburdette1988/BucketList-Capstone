@@ -5,30 +5,61 @@
 
 
 }
-
-.ideasAppView {
-display: flex;
-width: 50vw;
-}
-
 .ideaForm{
 
 width: 40vw;
+} 
+
+
+.logo{
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: space-evenly;
 }
 
+.logoImage{
+ height: 300px;
+ min-width: 200px;
+ flex-grow: calc(50);
+}
 
-.ideas{
-   
+.ideasContainer{
+
     display: flex;
-    flex-direction: column;
-    width: 32vw;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+ 
+  width: 50vw;
+  height: 50vh;
+}
+
+.ideasMainContainer{
+   
+    display: flex;  
+      flex-direction: row;
+     
+    width: auto;
+   
     
-    position:absolute;
-    top: 200px;
-    left:25px;
 } /* main container for Ideacards */
 
-.mainCard{
-   margin-top: 20%;
+.completedIdeas{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+   
+    width: 50vw;
+    height: 50vh;
+    
+}
+.IdeaListTitle{
+   color: black ;
  
+}
+
+.ideaForm{
+  color: black ;
 }

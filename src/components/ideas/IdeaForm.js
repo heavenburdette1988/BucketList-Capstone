@@ -16,7 +16,7 @@ export const IdeaForm = () => {
 
     const {getAges , ages } =useContext(AgeContext)
     
-    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+    const currentUser = JSON.parse(localStorage.getItem('react_trapperKeeper_user')).id
 
 
     /*

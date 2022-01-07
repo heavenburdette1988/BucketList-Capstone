@@ -11,9 +11,7 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 
 export const CommunityCard = ({ idea }) => {
     
-    const { userIdeas,addUserIdeas } = useContext(UserIdeaContext)
-    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
-   
+    
     
     const navigate = useNavigate(); 
 
@@ -32,7 +30,7 @@ export const CommunityCard = ({ idea }) => {
 
      
 <Card className="mainCard"  style={{ width: '15rem' }}>
-{/* <Card.Img className="cardImg" variant="top" src={idea.userIdea.type.typeImg}></Card.Img> */}
+
 <Card.Body>
 
   <Card.Title className="title" name="title"  >

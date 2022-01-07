@@ -6,7 +6,7 @@ export const UserIdeaContext = createContext()
 
 export const UserIdeaProvider = (props) => {
     const [userIdeas, setUserIdeas] = useState([])
-    const currentUser = localStorage.getItem("react_trapperKeeper_user")
+    const currentUser = JSON.parse(localStorage.getItem('react_trapperKeeper_user')).id
     
 //will need to update fetch("") calls
      const getUserIdeas = () => {

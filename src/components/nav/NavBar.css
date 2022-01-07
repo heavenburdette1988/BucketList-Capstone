@@ -1,0 +1,15 @@
+.NavBar{
+    background-image: url('../image/NavBarImage.png' ) ;
+    background-repeat:no-repeat; 
+    
+    background-size: 1150px 400px;
+    
+    
+    height: 400px;
+   
+    
+}
+
+.container{
+
+}

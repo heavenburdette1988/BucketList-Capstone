@@ -6,11 +6,15 @@ import reportWebVitals from './reportWebVitals';
 
 import TrapperKeeper from './components/TrapperKeeper';
 import { BrowserRouter as Router } from "react-router-dom"
+import './index.css'
 
 ReactDOM.render(
+  
   <React.StrictMode>
   <Router>
+    <div className='trapperKeeper'>
   <TrapperKeeper/>
+  </div>
 </Router>
  </React.StrictMode>,
   document.getElementById('root')

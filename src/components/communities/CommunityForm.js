@@ -4,16 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { Button } from "react-bootstrap";
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
-import { Box } from "@mui/system";
-import { Rating, Typography } from "@mui/material";
-import ReactDOM from 'react-dom';
+
 import { ActivityTypesContext } from "../activityTypes/ActivityTypesProvider";
 import { AgeContext } from "../ages/AgeProvider";
 import { IdeaContext } from "../ideas/IdeaProvider";
 
 export const CommunityForm = () => {
-    const { getUserIdeaById, updateUserIdea, userIdeas, addUserIdeas} = useContext(UserIdeaContext)
-    const currentUser = parseInt(localStorage.getItem("react_trapperKeeper_user"))
+    const { userIdeas, addUserIdeas} = useContext(UserIdeaContext)
+    const currentUser = JSON.parse(localStorage.getItem('react_trapperKeeper_user')).id
   
     const {getIdeaById} = useContext(IdeaContext)
     

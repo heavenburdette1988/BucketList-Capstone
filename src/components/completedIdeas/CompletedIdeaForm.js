@@ -6,11 +6,11 @@ import { Button } from "react-bootstrap";
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
 import { Box } from "@mui/system";
 import { Rating, Typography } from "@mui/material";
-import ReactDOM from 'react-dom';
+
 import './CompletedIdeas.css'
 
 export const CompletedIdeaForm = () => {
-    const { getUserIdeaById, updateUserIdea, userIdeas } = useContext(UserIdeaContext)
+    const { getUserIdeaById, updateUserIdea } = useContext(UserIdeaContext)
     
     const [value, setValue] = React.useState(2)
     
