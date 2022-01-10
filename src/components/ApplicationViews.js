@@ -15,6 +15,7 @@ import { UserIdeaProvider } from "./userIdeas/UserIdeasProvider";
 import { CompletedIdeaForm } from "./completedIdeas/CompletedIdeaForm";
 import { CommunityList } from "./communities/CommunityList";
 import { CommunityForm } from "./communities/CommunityForm";
+import { IdeaEditForm } from "./ideas/IdeaEditForm";
 
 
 
@@ -31,11 +32,12 @@ export default class ApplicationViews extends Component {
       <AgeProvider>
      <ActivityTypeProvider>
       <UserIdeaProvider>
-     <IdeaProvider>
+     <IdeaProvider>  
         <Routes>
            <Route path="home/*" element={<><IdeaList/></>} />
          <Route path="home/create/*" element={<IdeaForm />} />
-         <Route path="home/edit/:UserIdeaId*" element={<CompletedIdeaForm />} />       
+         <Route path="home/edit/:UserIdeaId*" element={<IdeaEditForm />} />
+         <Route path="home/complete/:UserIdeaId*" element={<CompletedIdeaForm />} />       
          <Route path="community/*" element={<><CommunityList /> </>} /> 
          <Route path="community/add/:AddIdeaId*" element={<CommunityForm /> } /> 
         </Routes>            

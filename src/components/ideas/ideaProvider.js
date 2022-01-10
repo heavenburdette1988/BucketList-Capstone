@@ -60,12 +60,12 @@ export const IdeaProvider = (props) => {
         .then((response) => {
             return response.json()
         }).then((ideaWeJustPosted) => {
-            // Todo: test if this works
+            // test if this works
             console.log(ideaWeJustPosted.id)
 
-            // Todo: attach to userIdea
+            //  attach to userIdea
             userIdea.ideaId = ideaWeJustPosted.id
-            //Todo: post userIdea
+            // post userIdea
             return fetch("http://localhost:8088/userIdeas", {
 
             method: "POST",
@@ -87,16 +87,7 @@ export const IdeaProvider = (props) => {
 
     }
 
-    // const patchTask = taskId => {
-
-    //     return fetch(`http://localhost:8088/tasks/${taskId}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({isCompleted: true})
-    //     })
-    // }
+ 
 
     const deleteIdea = ideaId => {
         return fetch(`http://localhost:8088/ideas/${ideaId}`, {

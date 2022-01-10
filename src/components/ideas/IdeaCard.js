@@ -1,4 +1,5 @@
 // import React, { useContext, useEffect, useState } from "react"
+import { Tooltip } from "@mui/material"
 import { useContext, useState } from "react"
 import {  Button, Card, Modal } from "react-bootstrap"
 import {useNavigate } from "react-router-dom"
@@ -42,7 +43,7 @@ export const IdeaCard = ({userIdea}) => {
    
       
       <Card className="mainCard" style={{ width: '15rem' }}>
-  <Card.Img className="cardImg" variant="top" src={userIdea.type?.typeImg}></Card.Img>
+ <Tooltip title={userIdea.type?.type} placement="right" disableInteractive><Card.Img className="cardImg" variant="top" src={userIdea.type?.typeImg}></Card.Img></Tooltip> 
   <Card.Body>
   
     <Card.Title className="title">
@@ -69,12 +70,16 @@ export const IdeaCard = ({userIdea}) => {
        <p>Type of Activity: {userIdea.type?.type}</p> 
       </Modal.Body> 
                <Modal.Footer>
-               
+               <Button variant="primary" onClick={() => {
+      navigate(`/home/edit/${userIdea.id}`)
+    }}>
+                  Edit
+                </Button>
                  <Button variant="primary" onClick={handleUserIdeaDelete}>
                    Delete
                 </Button>
                 <Button variant="primary" onClick={() => {
-      navigate(`/home/edit/${userIdea.id}`)
+      navigate(`/home/complete/${userIdea.id}`)
     }}>
                   Complete
                 </Button>

@@ -9,9 +9,9 @@ import { IdeaContext } from "./IdeaProvider";
 import './Idea.css'
 
 
-export const IdeaForm = () => {
-    const { addIdeas, getIdeas} = useContext(IdeaContext)
-    const {   getUserIdeas } = useContext(UserIdeaContext)
+export const IdeaEditForm = () => {
+    const { ideas ,addIdeas, getIdeas, getIdeaById } = useContext(IdeaContext)
+    const {   getUserIdeas, updateUserIdea, userIdeas, getUserIdeaById  } = useContext(UserIdeaContext)
     const { getActivityTypes, userActivityTypes } =useContext(ActivityTypesContext)
 
     const {getAges , ages } =useContext(AgeContext)
@@ -19,13 +19,13 @@ export const IdeaForm = () => {
     const currentUser = JSON.parse(localStorage.getItem('react_trapperKeeper_user')).id
 
 
-   
+    const [isLoading, setIsLoading] = useState(true);
     const {UserIdeaId} = useParams();
 
     // Todo: add all of the properties on the userIdea table to this state object
     const [idea, setIdea] = useState({
       //Properties from ideas
-        id:0,
+    
       title: "",
       url: "",
       details:"",
@@ -37,7 +37,8 @@ export const IdeaForm = () => {
       completionDate: null,
       typeId: 0,
       ageId: 0,
-      ideaId: 0
+      ideaId: 0,
+  
 
      });   // setting the state?
 
@@ -57,12 +58,22 @@ console.log(UserIdeaId)
         
     }, [])
 
-  
-    useEffect(() => {
-        getIdeas()
-        .then(getActivityTypes).then(getAges).then(getUserIdeas)
+    useEffect(()=> {
+        if(UserIdeaId){
+            getUserIdeaById(UserIdeaId)
+            .then(ui => {
+                ui.title = ui.idea.title
+                ui.url = ui.idea.url
+                ui.details = ui.idea.details
+                ui.idea = null
+              setIdea(ui)
+              setIsLoading(false)
+            })
+          } else {
+            setIsLoading (false)
         
-      }, [])
+     } }, [])
+
     
     //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
@@ -81,10 +92,9 @@ console.log(UserIdeaId)
       setIdea(newIdea)
     }
 
-    const handleClickSaveIdea = (event) => {
+    const handleClickEditIdea = (event) => {
         console.log("the Idea", idea)
-      event.preventDefault() //Prevents the browser from submitting the form
-
+    
       
       const typeId = parseInt(idea.typeId)
       idea.typeId = typeId
@@ -97,11 +107,30 @@ console.log(UserIdeaId)
       
       } else {
        
-        addIdeas(idea)
-        .then(() => navigate("/home")) //telling it to useNavigate to redisplay updated animal list
-      }
-}
+     
+    if(UserIdeaId)
 
+            updateUserIdea({
+              
+                
+                id: +UserIdeaId,
+                completionDate: idea.completionDate,
+                completedIdea: idea.completedIdea,
+                notes: idea.notes,
+                ideaId: +idea.ideaId,
+                userId: idea.userId,
+                rating: +idea.rating,
+                title: idea.title,
+                url:  idea.url,
+                details: idea.details,
+                typeId: +idea.typeId,
+                ageId: +idea.ageId
+                
+            })
+        
+            .then(()=> navigate('/home'))
+        }
+    }
 
 
     return (
@@ -117,20 +146,20 @@ console.log(UserIdeaId)
           <fieldset>
               <div className="form-group">
                   <label htmlFor="url">Url: </label>
-                  <input type="text" id="url" name="url" onChange={handleControlledInputChange} className="form-control" placeholder="URL" defaultValue={idea.url}/>
+                  <input type="text" id="url" name="url" onChange={handleControlledInputChange} required  className="form-control" placeholder="URL" defaultValue={idea.url}/>
               </div>
           </fieldset>
          <fieldset>
               <div className="form-group">
                   <label htmlFor="details">Details: </label>
-                  <input type="text" id="details" name="details" onChange={handleControlledInputChange} className="form-control" placeholder="Details of Activity" defaultValue={idea.details}/>
+                  <input type="text" id="details" name="details" onChange={handleControlledInputChange} className="form-control" placeholder="Details of Activity" required  defaultValue={idea.details}/>
               </div>
           </fieldset>
  
              <fieldset>
               <div className="form-group">
                   <label htmlFor="activityTypes">Activity Type: </label>
-                  <select defaultValue={ages.id} name="typeId" id="typeId" className="form-control"  onChange={handleControlledInputChange}>
+                  <select value={idea.typeId} name="typeId" id="typeId" className="form-control"  required onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
                       {userActivityTypes.map(a => (
                           <option key={a.id} value={a.id}>
@@ -144,7 +173,7 @@ console.log(UserIdeaId)
           <fieldset>
               <div className="form-group">
                   <label htmlFor="ages">Age range you want to complete in: </label>
-                  <select defaultValue={ages.id} name="ageId" id="ageId" className="form-control"  onChange={handleControlledInputChange}>
+                  <select value={idea.ageId} name="ageId" id="ageId" className="form-control" required  onChange={handleControlledInputChange}>
                       <option value="0">Select a Type</option>
                       {ages.map(p => (
                           <option key={p.id} value={p.id}>  
@@ -156,9 +185,12 @@ console.log(UserIdeaId)
           </fieldset>
     
           <button className="btn btn-primary"
-            onClick={handleClickSaveIdea}>
-            Save Idea
+          disabled={isLoading}
+   onClick={event => {
+    event.preventDefault() // Prevent browser from submitting the form and refreshing the page
+    handleClickEditIdea(UserIdeaId)
+  }}>
+ Save Idea
           </button>
       </form>
-    )
-}
+    )}

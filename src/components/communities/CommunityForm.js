@@ -36,7 +36,7 @@ export const CommunityForm = () => {
       userId: 0
     
      
-     });   // setting the state?
+     });   // setting the state
         
    
       
@@ -57,23 +57,16 @@ export const CommunityForm = () => {
        
     }, [])
 
-    // const handleDate = () =>{
-    //   let dt = new Date().toLocaleDateString();
-    //   setDate(dt);
-    // }
+    
 
    
 
     const handleControlledInputChange = (event) => {
      
-        /* When changing a state object or array,
-        always create a copy, make changes, and then set state.*/
-        const newUserIdea = { ...userIdea } // this is giving newAnimal state and properties
-      
+       
+        const newUserIdea = { ...userIdea } 
         
-        /* Animal is an object with properties.
-        Set the property to the new value
-        using object bracket notation. */
+       
         newUserIdea[event.target.name] = event.target.value
         // update state
         setUserIdea(newUserIdea)
