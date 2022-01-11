@@ -7,6 +7,7 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
 
 import { IdeaContext } from "./IdeaProvider";
 import './Idea.css'
+import { Button } from "react-bootstrap";
 
 
 export const IdeaEditForm = () => {
@@ -135,7 +136,7 @@ console.log(UserIdeaId)
 
     return (
       <form className="ideaForm">
-          <h2 className="ideaForm__title">New Idea</h2>
+          <h2 className="ideaForm__title">Edit Idea</h2>
                    
           <fieldset>
               <div className="form-group">
@@ -184,13 +185,13 @@ console.log(UserIdeaId)
               </div>
           </fieldset>
     
-          <button className="btn btn-primary"
+          <Button variant="secondary"className="btn btn-primary"
           disabled={isLoading}
    onClick={event => {
     event.preventDefault() // Prevent browser from submitting the form and refreshing the page
     handleClickEditIdea(UserIdeaId)
   }}>
  Save Idea
-          </button>
+          </Button>
       </form>
     )}

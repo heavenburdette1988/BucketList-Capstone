@@ -40,7 +40,7 @@ export const IdeaList = () => {
 <div className="mainContainer">
   {/* <div className="logo"><Image className="logoImage" src={require('../image/NavBarImage.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></div> */}
 
-<Button variant="primary" onClick={() => navigate("/home/create")}>
+<Button variant="secondary" onClick={() => navigate("/home/create")}>
     New Idea
 </Button>
 

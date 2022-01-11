@@ -55,11 +55,11 @@ export const IdeaCard = ({userIdea}) => {
      </Card.Body>
 
   {/* Details Button starts here   */}
-  <Button variant="primary" onClick={handleShow}>
+  <Button variant="dark" onClick={handleShow}>
                Details
              </Button>
       
-             <Modal show={show} onHide={handleClose}>
+             <Modal  show={show} onHide={handleClose}>
                <Modal.Header closeButton>
                  <Modal.Title > {userIdea.idea?.title }</Modal.Title>
                </Modal.Header>
@@ -70,15 +70,15 @@ export const IdeaCard = ({userIdea}) => {
        <p>Type of Activity: {userIdea.type?.type}</p> 
       </Modal.Body> 
                <Modal.Footer>
-               <Button variant="primary" onClick={() => {
+               <Button className="editButton" variant="dark" onClick={() => {
       navigate(`/home/edit/${userIdea.id}`)
     }}>
                   Edit
                 </Button>
-                 <Button variant="primary" onClick={handleUserIdeaDelete}>
+                 <Button variant="dark" onClick={handleUserIdeaDelete}>
                    Delete
                 </Button>
-                <Button variant="primary" onClick={() => {
+                <Button variant="dark" onClick={() => {
       navigate(`/home/complete/${userIdea.id}`)
     }}>
                   Complete

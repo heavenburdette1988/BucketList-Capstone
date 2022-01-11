@@ -32,6 +32,8 @@ export const CommunityRandomGenerator = ({ ideas }) => {
     return (
         <>
            <div className="randomIdea">
+                 <Button variant="secondary" class="newIdeaButton"
+         onClick={refreshPage}>Generate New Idea</Button>
             {
                 
                 <CommunityCard idea={ideas.map((idea, i) => {
@@ -41,8 +43,7 @@ export const CommunityRandomGenerator = ({ ideas }) => {
                 })[0]} />
 
             }
-        <Button variant="primary"
-         onClick={refreshPage}>Generate New Idea</Button>
+      
 
 </div>
 

@@ -39,6 +39,17 @@ export const UserIdeaProvider = (props) => {
 
     }
     
+
+    const updateCompletedIdea = idea => {
+        return fetch(`http://localhost:8088/userIdeas/${idea.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(idea)
+        })
+            .then(getUserIdeas)
+    }
    
 
     const updateUserIdea = ideaObj => {
@@ -108,7 +119,7 @@ export const UserIdeaProvider = (props) => {
     }
     return (
         <UserIdeaContext.Provider value={{
-               userIdeas, getUserIdeas, addUserIdeas, deleteUserIdea, patchUserIdea, getUserIdeaById, updateUserIdea
+               userIdeas, getUserIdeas, addUserIdeas, deleteUserIdea, patchUserIdea, getUserIdeaById, updateUserIdea, updateCompletedIdea
         }}>
             {props.children}
         </UserIdeaContext.Provider>

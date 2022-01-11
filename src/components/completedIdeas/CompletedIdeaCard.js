@@ -46,7 +46,7 @@ const [show, setShow] = useState(false);
     </Box>
        </Card.Body>
 
-       <Button variant="primary" onClick={handleShow}>
+       <Button variant="dark" onClick={handleShow}>
                Details
              </Button>
              <Modal show={show} onHide={handleClose}>

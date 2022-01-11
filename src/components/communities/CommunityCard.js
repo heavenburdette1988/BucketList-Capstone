@@ -49,7 +49,7 @@ export const CommunityCard = ({ idea }) => {
   
   
         
-               <Button variant="primary"
+               <Button variant="dark"
                  onClick={handleAddUserIdea}>
                Add idea to my list
               </Button>

@@ -19,7 +19,7 @@ export const Logout = (props) =>{
 
     return (
         <>
-        <Button id="logout-button" className="primary" onClick={handleLogout}>Log Out</Button>
+        <Button id="logout-button" variant="secondary" className="primary" onClick={handleLogout}>Log Out</Button>
         </>
     )
 }

@@ -10,7 +10,7 @@ import { Rating, Typography } from "@mui/material";
 import './CompletedIdeas.css'
 
 export const CompletedIdeaForm = () => {
-    const { getUserIdeaById, updateUserIdea } = useContext(UserIdeaContext)
+    const { getUserIdeaById, updateCompletedIdea } = useContext(UserIdeaContext)
     
     const [value, setValue] = React.useState(2)
     
@@ -77,7 +77,7 @@ export const CompletedIdeaForm = () => {
         const handleSaveCompletedIdea = () => {
         console.log("rating", completedUserIdea.rating)
        
-              updateUserIdea({
+        updateCompletedIdea({
 
              
                   id: UserIdeaId,

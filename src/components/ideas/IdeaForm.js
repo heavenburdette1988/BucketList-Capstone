@@ -7,6 +7,7 @@ import { UserIdeaContext } from "../userIdeas/UserIdeasProvider";
 
 import { IdeaContext } from "./IdeaProvider";
 import './Idea.css'
+import { Button } from "react-bootstrap";
 
 
 export const IdeaForm = () => {
@@ -155,10 +156,10 @@ console.log(UserIdeaId)
               </div>
           </fieldset>
     
-          <button className="btn btn-primary"
+          <Button variant="secondary" className="btn btn-primary"
             onClick={handleClickSaveIdea}>
             Save Idea
-          </button>
+          </Button>
       </form>
     )
 }
