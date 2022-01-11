@@ -110,23 +110,23 @@ export const IdeaList = () => {
   <Carousel.Item interval={1000} >
     <img
       className="d-block w-100"
-      src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif"
+      src="https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
       alt="It's Done Gif of Frodo"
     />
     </Carousel.Item>
-  <Carousel.Item interval={1000}  >
+  <Carousel.Item interval={1000} >
     <img
       className="d-block w-100"
-      src="https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
-      alt="Dwight Congrats"
+      src="https://media.giphy.com/media/3oz9ZE2Oo9zRC/giphy.gif "
+      alt="Minion Congrats"
     />
     
   </Carousel.Item>
-  <Carousel.Item  interval={1000}>
+  <Carousel.Item interval={1000} >
     <img
       className="d-block w-100"
-      src="https://media.giphy.com/media/3oz9ZE2Oo9zRC/giphy.gif"
-      alt="Minions Congrats"
+      src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif"
+      alt="Dwight Get in Coffin"
     />
   
   </Carousel.Item>

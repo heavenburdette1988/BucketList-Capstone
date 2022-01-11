@@ -29,8 +29,8 @@ export const Register = () => {
         .then(res => res.json())
         .then(createdUser => {
             if (createdUser.hasOwnProperty("id")) {
-              localStorage.setItem("react_trapperKeeper_user", createdUser.id);
-              navigate("/");
+              localStorage.setItem('react_trapperKeeper_user', JSON.stringify(createdUser));
+              navigate("/home");
             }
         })
       }
