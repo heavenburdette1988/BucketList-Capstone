@@ -113,8 +113,8 @@ export const CommunityForm = () => {
       
     return (
       <form className="addIdeaForm">
-          <p className="addIdeaForm__title">Please select below options for the</p> 
-          <h2>{userIdea.title}</h2>
+          <p className="addIdeaForm__title">Please select below options for the </p> 
+    <p><strong>{userIdea.title}</strong></p>
         
           <fieldset>
               <div className="form-group">

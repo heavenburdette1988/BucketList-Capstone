@@ -36,7 +36,7 @@ export const CommunityCard = ({ idea }) => {
   <Card.Title className="title" name="title"  >
        {idea?.title}     
         </Card.Title>
-  <Card.Text className="details" name="title" >Details: {idea?.details}
+  <Card.Text className="details" name="title" > <strong>Details:</strong> {idea?.details}
   </Card.Text>
   {/* <Card.Text className="type"> Type {idea.userIdeas[0]?.typeId}  {userIdeas.type?.map(type => {
         return <div key={type.id} value={type.id}>

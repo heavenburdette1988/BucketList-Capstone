@@ -107,6 +107,7 @@ export const CompletedIdeaForm = () => {
     return (
       <form className="completedIdeaForm">
           <h2 className="completedIdeaForm__title">Completed Note Idea</h2>
+          <div className="completedIdeaTitle"><strong>{completedUserIdea.idea?.title}</strong></div>
           <fieldset>
               <div className="form-group">
                   <label htmlFor="completedIdeaNote">Notes</label>

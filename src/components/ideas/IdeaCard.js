@@ -49,7 +49,7 @@ export const IdeaCard = ({userIdea}) => {
     <Card.Title className="title">
          { userIdea.idea?.title }     
           </Card.Title>
-    <Card.Text className="age"> When to complete by: {userIdea.age?.age}
+    <Card.Text className="age"> <strong>When to complete by:</strong> {userIdea.age?.age}
     </Card.Text>
     <Card.Link variant="primary" name="url" target="_blank" rel="noreferrer noopener" href={userIdea.idea?.url} >Explore</Card.Link>
      </Card.Body>
@@ -65,9 +65,9 @@ export const IdeaCard = ({userIdea}) => {
                </Modal.Header>
         
      <Modal.Body>
-       <p>Details: {userIdea.idea?.details}</p> 
-       <p>When to complete: {userIdea.age?.age}</p>
-       <p>Type of Activity: {userIdea.type?.type}</p> 
+       <p><strong>Details: </strong>{userIdea.idea?.details}</p> 
+       <p><strong>When to complete: </strong> {userIdea.age?.age}</p>
+       <p><strong>Type of Activity:</strong> {userIdea.type?.type}</p> 
       </Modal.Body> 
                <Modal.Footer>
                <Button className="editButton" variant="dark" onClick={() => {

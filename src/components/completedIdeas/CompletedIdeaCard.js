@@ -40,7 +40,7 @@ const [show, setShow] = useState(false);
       }}
     >
      
-      <Typography component="legend">Your Rating:</Typography>
+      <Typography component="legend"><strong>Your Rating:</strong></Typography>
       <Rating name="read-only" value={userIdea.rating} readOnly />
      
     </Box>
