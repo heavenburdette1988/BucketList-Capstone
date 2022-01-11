@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 
+
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { IdeaCompletedCard } from "./CompletedIdeaCard"
 
@@ -10,8 +11,10 @@ export const CompletedIdeaList = () => {
     // This state changes when `getIdeas()` is invoked below
      const { userIdeas, getUserIdeas } = useContext(UserIdeaContext)
      
-
     const [showCompletedUserIdeas, setShowCompletedUserIdeas] = useState(true)
+
+  
+
      
     //useEffect - reach out to the world for something
     useEffect(() => {
@@ -22,8 +25,7 @@ export const CompletedIdeaList = () => {
       
     // const navigate = useNavigate()
   
-  
-  
+    
   
     return (
   
@@ -57,6 +59,8 @@ export const CompletedIdeaList = () => {
              
         }
       </div> 
+
+     
       </>
   
     )

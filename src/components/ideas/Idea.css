@@ -70,3 +70,25 @@ width: 40vw;
   background-color:  #c5c6c7;
 }
 
+.completeImage, .d-block{
+  display: flex;
+  width: 400px;
+height: 200px;
+padding: 2em;
+
+}
+
+.completeModal{
+  background-color:#c5c6c7;
+  color:#1f2833;
+  background-image: url('https://media.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif');
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ }
+.modalTitle, .completeBody{
+  background-color: rgb(228, 224, 10);
+  border: rgb(5, 5, 5) .1em solid;
+  padding: .5em;
+}
