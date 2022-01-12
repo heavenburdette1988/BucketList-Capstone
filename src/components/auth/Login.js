@@ -54,6 +54,7 @@ export const Login = (props) => {
         </Modal.Body>
       </Modal>
       <Form>
+        <h2 className='authTitle'>Bucket List Trapper Keeper</h2>
         <Form.Group>
           <Form.Label><p className='loginTitle'>Login with Email </p></Form.Label>
           <Form.Control onChange={(e) => set(e.target.value)} type="email"  placeholder="Enter email" />

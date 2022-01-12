@@ -34,7 +34,7 @@ export const CommunityCard = ({ idea }) => {
 <Card.Body>
   
 
-  <Card.Title className="title" name="title"  >
+  <Card.Title className="commTitle" name="title"  >
        {idea?.title}     
         </Card.Title>
   <Card.Text className="details" name="title" > <strong>Details:</strong> {idea?.details}
