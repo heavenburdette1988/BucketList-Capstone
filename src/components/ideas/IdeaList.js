@@ -19,14 +19,14 @@ export const IdeaList = () => {
   
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-  const [goDie, setGoDie] = useState(false);
+  
 
   //useEffect - reach out to the world for something
   useEffect(() => {
-    console.log("IdeaList: useEffect - getUserIdeas", getUserIdeas)
+    // console.log("IdeaList: useEffect - getUserIdeas", getUserIdeas)
     getUserIdeas()
   }, [])
-// // console.log(!userIdeas.filter(userIdea => userIdea.completedIdea === false))
+
  
   const navigate = useNavigate()
 
@@ -34,18 +34,6 @@ export const IdeaList = () => {
     setFullscreen(breakpoint);
     setShow(true);
   }
-
-//   const students = [{ name: "Heaven", skills: "join tables" }, [{ name: "Aki", skills: "photo uploading" }, [{ name: "Steven", skills: "graphs" }]
-
-//   if (!students.find(studentInLoop => studentInLoop.skills === "graphs")) {
-//     console.log("we have a grapher!!")
-  
-// }
-
-
-// consoleg(students.find(studentInLoop => studentInLoop.skills === "graphs"))
-// console.log(2+2 ===4)
-
 
 
 
@@ -56,8 +44,7 @@ export const IdeaList = () => {
 
 
       <div className="mainContainer">
-        {/* <div className="logo"><Image className="logoImage" src={require('../image/NavBarImage.png')} rounded alt="Brand logo" style={{ width: '7rem' }}/></div> */}
-
+      
         <Button variant="secondary" onClick={() => navigate("/home/create")}>
           New Idea
         </Button>
@@ -96,9 +83,7 @@ export const IdeaList = () => {
 
 
 
-    {/* <Button key='xxl-down' className="me-2" onClick={() => handleShow('sm-down ')}>
-       Full screen
-     </Button> */}
+
   
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
         <div className="completeModal">
@@ -106,15 +91,15 @@ export const IdeaList = () => {
             <Modal.Title><div className="modalTitle"><div></div>Congratulation!!!</div></Modal.Title>
           </Modal.Header>
 
-          <Carousel>
-  <Carousel.Item interval={1000} >
+          {/* <Carousel>
+  <Carousel.Item interval={2000} >
     <img
       className="d-block w-100"
       src="https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
       alt="It's Done Gif of Frodo"
     />
     </Carousel.Item>
-  <Carousel.Item interval={1000} >
+  <Carousel.Item interval={2000}  >
     <img
       className="d-block w-100"
       src="https://media.giphy.com/media/3oz9ZE2Oo9zRC/giphy.gif "
@@ -122,7 +107,7 @@ export const IdeaList = () => {
     />
     
   </Carousel.Item>
-  <Carousel.Item interval={1000} >
+  <Carousel.Item  >
     <img
       className="d-block w-100"
       src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif"
@@ -130,9 +115,9 @@ export const IdeaList = () => {
     />
   
   </Carousel.Item>
-</Carousel>
+</Carousel> */}
 
-          {/* <Image src="https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif" alt="its done gif" className="completeImage"></Image> */}
+          <Image src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif" alt="its done gif" className="completeImage"></Image>
 
           <Modal.Body><div className="completeBody">You have completed all your life goals. You may now die.</div></Modal.Body>
         </div>  </Modal>
