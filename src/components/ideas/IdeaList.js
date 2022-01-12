@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { IdeaCard } from "./IdeaCard"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import { useNavigate } from "react-router-dom"
-import { Button, Carousel, Image, Modal } from "react-bootstrap"
+import { Button, Card, Carousel, Image, Modal } from "react-bootstrap"
 
 import './Idea.css'
 import { CompletedIdeaList } from "../completedIdeas/CompletedIdeaList"
@@ -86,41 +86,16 @@ export const IdeaList = () => {
 
   
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <div className="completeModal">
+        <div className="backgroundModal">
           <Modal.Header closeButton>
-            <Modal.Title><div className="modalTitle"><div></div>Congratulation!!!</div></Modal.Title>
+          
           </Modal.Header>
-
-          {/* <Carousel>
-  <Carousel.Item interval={2000} >
-    <img
-      className="d-block w-100"
-      src="https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
-      alt="It's Done Gif of Frodo"
-    />
-    </Carousel.Item>
-  <Carousel.Item interval={2000}  >
-    <img
-      className="d-block w-100"
-      src="https://media.giphy.com/media/3oz9ZE2Oo9zRC/giphy.gif "
-      alt="Minion Congrats"
-    />
-    
-  </Carousel.Item>
-  <Carousel.Item  >
-    <img
-      className="d-block w-100"
-      src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif"
-      alt="Dwight Get in Coffin"
-    />
-  
-  </Carousel.Item>
-</Carousel> */}
-
+<div className="completeModal" closeButton>
+      <Modal.Title><img className="congratsImg" src="https://media.giphy.com/media/TWRXfLpxq2mJC0bvHx/giphy.gif" alt="Congrats"/></Modal.Title>
           <Image src="https://media.giphy.com/media/lNrNLRLmpC3VIjl82D/giphy.gif" alt="its done gif" className="completeImage"></Image>
 
-          <Modal.Body><div className="completeBody">You have completed all your life goals. You may now die.</div></Modal.Body>
-        </div>  </Modal>
+          <Modal.Body><div className="completeBody"><strong>You have completed all your life goals. You may now die.</strong></div></Modal.Body>
+        </div> </div> </Modal>
     </>
 
   )

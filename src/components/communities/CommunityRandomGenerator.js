@@ -32,7 +32,7 @@ export const CommunityRandomGenerator = ({ ideas }) => {
     return (
         <>
            <div className="randomIdea">
-                 <Button variant="secondary" class="newIdeaButton"
+                 <Button variant="secondary" className="newIdeaButton"
          onClick={refreshPage}>Generate New Idea</Button>
             {
                 

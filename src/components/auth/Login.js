@@ -55,13 +55,13 @@ export const Login = (props) => {
       </Modal>
       <Form>
         <Form.Group>
-          <Form.Label>Email address</Form.Label>
+          <Form.Label><p className='loginTitle'>Login with Email </p></Form.Label>
           <Form.Control onChange={(e) => set(e.target.value)} type="email"  placeholder="Enter email" />
           <Form.Text  className="text-muted">
-            You can trust us!
+          <p>You can trust us!</p> 
           </Form.Text>
           <Form.Text  className="text-muted">
-            Don't have an account? <Link to='/register' >Register</Link>
+           Don't have an account? <Link to='/register' >Register</Link>
           </Form.Text>
         </Form.Group>
         <Button onClick={handleLogin} variant="primary" type="submit">

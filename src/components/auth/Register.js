@@ -62,10 +62,10 @@ export const Register = () => {
       </Modal>
       <Form>
         <Form.Group>
-          <Form.Label>Email address</Form.Label>
+          <Form.Label><p className="loginTitle">Register with Email</p></Form.Label>
           <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
-            You can trust us!
+           <p> You can trust us!</p>
           </Form.Text>
           <Form.Text  className="text-muted">
             Already have an account? <Link to='/login' >Login</Link>

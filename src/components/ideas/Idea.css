@@ -72,8 +72,8 @@ width: 40vw;
 
 .completeImage, .d-block{
   display: flex;
-  width: 300px;
-height: 200px;
+  width: 400px;
+height: 300px;
 padding: 2em;
 
 }
@@ -82,13 +82,23 @@ padding: 2em;
   background-color:#c5c6c7;
   color:#1f2833;
   background-image: url('https://media.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif');
-  
-  display: flex;
+   display: flex;
   align-items: center;
   flex-direction: column;
  }
-.modalTitle, .completeBody{
-  background-color: rgb(228, 224, 10);
-  border: rgb(5, 5, 5) .1em solid;
+ .completeBody{
+  background-color: #8c52ff;
+  color: #0a0a0a;
+  border: rgb(5, 5, 5) .1em dashed;
   padding: .5em;
+}
+
+.backgroundModal{
+  background-image: url('https://media.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif');
+}
+
+.congratsImg{
+  width: 10em;
+  height: 3em;
+  
 }

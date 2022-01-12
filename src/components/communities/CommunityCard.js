@@ -32,18 +32,14 @@ export const CommunityCard = ({ idea }) => {
 <Card className="mainCard"  style={{ width: '15rem' }}>
 
 <Card.Body>
+  
 
   <Card.Title className="title" name="title"  >
        {idea?.title}     
         </Card.Title>
   <Card.Text className="details" name="title" > <strong>Details:</strong> {idea?.details}
   </Card.Text>
-  {/* <Card.Text className="type"> Type {idea.userIdeas[0]?.typeId}  {userIdeas.type?.map(type => {
-        return <div key={type.id} value={type.id}>
-        {type.type}</div>
-        })}
-  </Card.Text>
-   */}
+ 
    <Card.Link variant="primary" name="url" target="_blank" rel="noreferrer noopener" href={idea?.url} >Explore</Card.Link>
    </Card.Body>
   
