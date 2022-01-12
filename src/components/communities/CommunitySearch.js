@@ -1,3 +1,5 @@
+// this searches community Ideas it lives in the community list component
+
 import React, { useContext } from "react"
 
 import { IdeaContext } from "../ideas/IdeaProvider"

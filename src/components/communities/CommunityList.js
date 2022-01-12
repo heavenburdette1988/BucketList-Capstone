@@ -1,3 +1,5 @@
+//community list where all user ideas print for both list and random generator
+
 import React, { useContext, useEffect, useState } from "react"
 import { CommunityCard } from "./CommunityCard"
 

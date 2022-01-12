@@ -1,4 +1,4 @@
-
+// randomly generates ideas for users to add.
 
 
 import { Button } from "react-bootstrap"

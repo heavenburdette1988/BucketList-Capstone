@@ -34,7 +34,7 @@ export const IdeaList = () => {
     setFullscreen(breakpoint);
     setShow(true);
   }
-
+// handleshow pulls is for the modal for the completion message
 
 
   return (
@@ -55,7 +55,8 @@ export const IdeaList = () => {
             <h2 className="IdeaListTitle">Bucket List Ideas</h2>
             {
 
-              //todo Add user Welcome Section
+              //this is doing two things,the first condition is for the complete messeage
+              //the 2nd condition is searching for all false ideas to print them to the idea list
               userIdeas.some(userIdea => userIdea.completedIdea === false)?
               userIdeas.filter(userIdea => userIdea.completedIdea === showUncompletedUserIdeas).map(userIdea => {
 

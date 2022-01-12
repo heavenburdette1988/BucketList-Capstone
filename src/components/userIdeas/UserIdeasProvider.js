@@ -1,3 +1,5 @@
+// This provider is the main provider as it is pulling from the join table. 
+
 import React, { createContext, useState } from "react"
 
 export const UserIdeaContext = createContext()
@@ -26,20 +28,22 @@ export const UserIdeaProvider = (props) => {
         .then(getUserIdeas)
     }
    
-
+    
      const deleteUserIdea = UserIdeaId => {
         return fetch(`http://localhost:8088/userIdeas/${UserIdeaId}`, {
             method: "DELETE"
         })
             .then(getUserIdeas)
     }
+
+
     const getUserIdeaById = (id) => {
         return fetch(`http://localhost:8088/userIdeas/${id}?_expand=idea`)
             .then(res => res.json())
 
     }
     
-
+        // this updates ideas when they are completed.
     const updateCompletedIdea = idea => {
         return fetch(`http://localhost:8088/userIdeas/${idea.id}`, {
             method: "PUT",
@@ -52,6 +56,8 @@ export const UserIdeaProvider = (props) => {
     }
    
 
+
+    //UpdateUserIdea has to edit in two places because it is pulling info both ideas db and userIdeas db
     const updateUserIdea = ideaObj => {
         console.log("the IdeaObj" ,ideaObj)
 

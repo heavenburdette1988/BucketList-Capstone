@@ -1,3 +1,5 @@
+// this is the completed ideas list to print all ideas that are true in the completed list
+
 import { useContext, useEffect, useState } from "react"
 
 

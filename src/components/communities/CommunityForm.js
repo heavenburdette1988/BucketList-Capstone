@@ -1,3 +1,4 @@
+//this form is used when add idea is clicked to add to your list
 
 import  React, { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from 'react-router-dom';
@@ -44,7 +45,7 @@ export const CommunityForm = () => {
  
 
  useEffect(() => {
-          //todo trouble shoot this to get ideas in state
+          
         
           getIdeaById(AddIdeaId).then(setUserIdea).then(getActivityTypes).then(getAges)
  

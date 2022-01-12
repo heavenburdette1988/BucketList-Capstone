@@ -1,3 +1,5 @@
+//this is for the edit ideas in the bucket list. 
+
 import React, { useContext, useEffect, useState } from "react"
 
 import { useNavigate, useParams } from 'react-router-dom';
@@ -74,6 +76,7 @@ console.log(UserIdeaId)
             setIsLoading (false)
         
      } }, [])
+     // we had to define these properties of the objects to get it is from the ideas table to edit them
 
     
     //when a field changes, update state. The return will re-render and display based on the values in state

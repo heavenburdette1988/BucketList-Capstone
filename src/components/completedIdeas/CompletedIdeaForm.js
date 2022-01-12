@@ -1,3 +1,5 @@
+// this form allows users to change edit info in the userIdeas table to add notes ect. 
+
 
 import  React, { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from 'react-router-dom';

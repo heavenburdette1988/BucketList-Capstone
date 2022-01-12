@@ -1,3 +1,4 @@
+// this is the card for the completed Idea List
 
 import { Card, Button, Modal } from "react-bootstrap"
 // import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"

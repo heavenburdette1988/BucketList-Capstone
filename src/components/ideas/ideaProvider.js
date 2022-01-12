@@ -1,3 +1,5 @@
+//This provider pulls from the ideas db
+
 import React, { useState, createContext, useContext } from "react"
 import { UserIdeaContext } from "../userIdeas/UserIdeasProvider"
 import './Idea.css'
@@ -23,7 +25,7 @@ export const IdeaProvider = (props) => {
     //* This allows us to access both ideas and userIdeas from the Database to be able to print from both lists -  UserIdeas is a join table
 
 
-
+    //This is posting to both ideas and userideas when new idea is added. 
     const addIdeas = ideaObj => {
  console.log("the",ideaObj)
         // Todo: fill out these objects to match the db tables

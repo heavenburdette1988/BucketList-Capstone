@@ -1,3 +1,5 @@
+// this form has both the idea card and the details modal in it. 
+
 // import React, { useContext, useEffect, useState } from "react"
 import { Tooltip } from "@mui/material"
 import { useContext, useState } from "react"
