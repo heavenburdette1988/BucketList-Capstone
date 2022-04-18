@@ -1,0 +1,94 @@
+.cardImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.ideaForm{
+
+width: 40vw;
+} 
+/* 
+
+.logo{
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: space-evenly;
+} */
+
+/* .logoImage{
+ height: 300px;
+ min-width: 200px;
+ flex-grow: calc(50);
+} */
+
+.ideasContainer{
+
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 50vw;
+  height: 50vh;
+}
+
+.ideasMainContainer{
+   
+    display: flex;  
+    flex-direction: row;
+   
+    width: auto;
+   
+    
+} /* main container for Ideacards */
+
+.completedIdeas{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    width: 50vw;
+    height: 50vh;
+    
+}
+.IdeaListTitle{
+  color:  #c5c6c7;
+ 
+}
+
+.ideaForm{
+  color:  #c5c6c7 
+}
+
+.mainCard{
+ 
+  margin: 1em;
+  background-color:  #c5c6c7;
+}
+
+.completeImage, .d-block{
+  display: flex;
+  width: 400px;
+height: 200px;
+padding: 2em;
+
+}
+
+.completeModal{
+  background-color:#c5c6c7;
+  color:#1f2833;
+  background-image: url('https://media.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif');
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ }
+.modalTitle, .completeBody{
+  background-color: rgb(228, 224, 10);
+  border: rgb(5, 5, 5) .1em solid;
+  padding: .5em;
+}

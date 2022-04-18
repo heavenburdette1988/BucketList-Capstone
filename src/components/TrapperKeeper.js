@@ -8,6 +8,7 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import ApplicationViews from "./ApplicationViews";
 
+
 class TrapperKeeper extends Component {
   render() {
     return (
@@ -26,7 +27,7 @@ const Auth = () => {
     return(
       <>
         <NavBar />
-     <ApplicationViews/>
+     <ApplicationViews />
       </>
     );
   } else {

@@ -1,0 +1,54 @@
+
+.communityIdeasMain{
+    display: flex;  
+    flex-direction: row;
+   
+    width: auto;
+ 
+}
+
+.communityIdeaList{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+   
+    width: 50vw;
+    height: 50vh;
+}
+
+.communityGeneratorList{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+   
+    width: 50vw;
+    height: 50vh;
+}
+
+.search{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+   
+    width: 50vw;
+    height: 50vh;
+}
+
+.communityListTitle{
+    color: #EEE2DC;
+}
+.randomTitle{
+    color: #EEE2DC;
+}
+
+.addIdeaForm__title{
+    color: #EEE2DC; 
+}
+
+.addIdeaForm {
+    color: #EEE2DC; 
+
+}
